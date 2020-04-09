@@ -1,0 +1,23 @@
+architecture :
+
+peer to peer = toute les machines peuvent communiquer et un programme tourne sur différentes machines
+>< 
+client to server
+
+les ports en dessous de 100 ont un usage pré-défini
+chaque connexion est associé à un numéro de ports
+
+Protocole User Datagram Protocol UDP :
+Communication par échange de paquets discrets de données
+identification d'une adrresse UDP <IP, Port>
+
+Protocole Transimission Control Protocol TCP :
+Communication par flux
+identification d'une adrresse TCP <IP, Port>
+
+Socket :
+avec le module import socket inclus dans python on peut faire plusieurs chose :
+socket.getfqdn('URL') : 
+socket.gethostname() : 
+socket.gethostbyname('URL') : 
+socket.gethostbyaddr('adresse IP') : 
