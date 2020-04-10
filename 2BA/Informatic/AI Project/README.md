@@ -1,4 +1,4 @@
-# AIGameRunner
+# AI Server
 
 ## Installation
 
@@ -7,10 +7,6 @@ Clone the repository on your computer
 ## Add Games
 
 Add a script in the `/public/games` directory
-
-## Create an AI
-
-An AI is a web server similar to the ones you can find in the `/ai` directory
 
 ## Start the Front End
 
