@@ -1,4 +1,3 @@
-
 # transformpict.py
 # Author: Sébastien Combéfis
 # Version: April 15, 2020
