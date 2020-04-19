@@ -38,4 +38,4 @@ def crop(image, point1, point2):
 inverted_image = invertcolor(im) 
 cropped_image = crop(inverted_image, (325, 65), (1120, 905))
 final_image = dark(cropped_image, 50)
-imageio.imwrite(ROOT + 'tiger-transformed.jpg', final_image.astype(np.uint8))
+imageio.imwrite(ROOT + 'transformed.jpg', final_image.astype(np.uint8))
