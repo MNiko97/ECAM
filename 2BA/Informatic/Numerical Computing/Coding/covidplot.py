@@ -32,7 +32,7 @@ while i < max_row:
         data.append([date, death])
         death = 0
     i+=1
-    
+
 # Retrieve date in current format
 # Separte year, month and day and store into 'x' values
 # And finally set y values from data    
@@ -46,8 +46,6 @@ fig, ax = plt.subplots()
 ax.set_xlabel('Time [MM-DD]', fontsize='12')
 ax.set_ylabel('Deaths', fontsize='12')
 ax.set_title('Total COVID-19 Deaths in Belgium 2020', fontsize='16', fontweight='bold')
-
-
 ax.grid()
 
 # Convert the date in 'MM-DD' format for the 'x' axe
