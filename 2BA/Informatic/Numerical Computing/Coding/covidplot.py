@@ -6,8 +6,13 @@ import openpyxl, os
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import datetime as dt
+import numpy as np
+import wget
 
 ROOT = os.path.abspath(os.getcwd()) + "/2BA/Informatic/Numerical Computing/Coding/"
+URL = 'https://epistat.sciensano.be/Data/COVID19BE.xlsx'
+wget.download(URL, ROOT)
+
 
 # Opening COVID19 dataset in xlsx format
 # Select sheet DEATH
@@ -19,10 +24,11 @@ sheet = book.get_sheet_by_name('MORT')
 data = []
 death = 0
 i = 2
-max_row = sheet.max_row + 1
+max_row = sheet.max_row 
 
 # Retrieve date and death in dataset
 # Cumulute death per day and store data
+# Don't take the last day because of no sufficiant data
 while i < max_row:
     death += sheet.cell(row = i, column = 5).value
     date = sheet.cell(row = i, column = 1).value
