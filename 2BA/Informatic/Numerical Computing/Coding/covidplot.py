@@ -7,17 +7,31 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import datetime as dt
 import numpy as np
-import wget
+import wget 
 
 ROOT = os.path.abspath(os.getcwd()) + "/2BA/Informatic/Numerical Computing/Coding/"
-URL = 'https://epistat.sciensano.be/Data/COVID19BE.xlsx'
-wget.download(URL, ROOT)
+FILE = 'COVID19BE.xlsx'
+SHEET = 'MORT'
+URL= 'https://epistat.sciensano.be/Data/COVID19BE.xlsx'
+
+if os.path.isfile(ROOT+FILE) :
+    print("UDPDATING DATA ...")
+    print('Removing file : ' + FILE)
+    os.remove(ROOT+FILE)
+    print("Downloading file : " + FILE)
+    wget.download(URL, ROOT)
+    print("\nDownload Completed Successfully  !")
+else :
+    print("Downloading file : " + FILE)
+    wget.download(URL, ROOT)
+    print("\nDownload Completed Successfully !")
 
 
 # Opening COVID19 dataset in xlsx format
 # Select sheet DEATH
-book = openpyxl.load_workbook(ROOT + 'COVID19BE.xlsx')
-sheet = book.get_sheet_by_name('MORT')
+print('Retrieving DATA from ' + FILE + ' ...')
+book = openpyxl.load_workbook(ROOT+FILE)
+sheet = book.get_sheet_by_name(SHEET)
 
 # Initialize some variables 
 # For the data analysis below
@@ -29,6 +43,7 @@ max_row = sheet.max_row
 # Retrieve date and death in dataset
 # Cumulute death per day and store data
 # Don't take the last day because of no sufficiant data
+print('Processing DATA for ploting ...')
 while i < max_row:
     death += sheet.cell(row = i, column = 5).value
     date = sheet.cell(row = i, column = 1).value
@@ -38,10 +53,12 @@ while i < max_row:
         data.append([date, death])
         death = 0
     i+=1
+print("Processing Completed Successfully !")
 
 # Retrieve date in current format
 # Separte year, month and day and store into 'x' values
 # And finally set y values from data    
+print("Setting up plot settings ...")
 dates = [date[0] for date in data]
 x = [dt.datetime.strptime(d, '%Y-%m-%d').date() for d in dates]
 y = [death[1] for death in data]
@@ -61,3 +78,4 @@ plt.gca().xaxis.set_major_locator(mdates.DayLocator(interval=4))
 plt.plot(x,y, 'o-r', linewidth=2)
 plt.gcf().autofmt_xdate()
 plt.show()
+print('Plotting Done !')
