@@ -13,6 +13,8 @@ from kivy.clock import Clock
 from ast import literal_eval
 from game import Game
 
+ROOT = os.path.abspath(os.getcwd()) + "/2BA/Informatic/BattleShip Project/res/"
+
 class GUI(Screen) :
     
     def __init__(self):
@@ -24,7 +26,7 @@ class GUI(Screen) :
 
     def menu(self):
         screen = Screen(name='Home')
-        menu_background=Image(source="main_background.jpg", allow_stretch=True, keep_ratio=False)
+        menu_background=Image(source=ROOT+'main_background.jpg', allow_stretch=True, keep_ratio=False)
         layout = FloatLayout(size=(500, 500))
         layout.add_widget(menu_background)
         btn_play = Button(text='Play', size_hint=(.15, .08), pos_hint={'x':.025, 'y':.875}) 
@@ -46,7 +48,7 @@ class GUI(Screen) :
         sys.exit(0)
 
     def settings(self):
-        screen = Screen (name='Settings')
+        screen = Screen (name=ROOT+'Settings')
         settings_background=Image(source='settings_background.jpg', allow_stretch=True, keep_ratio=False)
         layout = FloatLayout(size=(500, 500))
         layout.add_widget(settings_background)

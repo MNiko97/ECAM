@@ -9,7 +9,7 @@ import numpy as np
 # https://www.flickr.com/photos/31004716@N00/3732644607
 # The returned ndarray has three dimensions: the width, the height and
 # the number of layers (3 for RGB picture, 4 for RGBA picture, etc.)
-ROOT = os.path.abspath(os.getcwd()) + "/2BA/Informatic/Numerical Computing/Coding/"
+ROOT = os.path.abspath(os.getcwd()) + "/2BA/Informatic/res/"
 image = 'tiger.jpg'
 im = imageio.imread(ROOT + image)
 

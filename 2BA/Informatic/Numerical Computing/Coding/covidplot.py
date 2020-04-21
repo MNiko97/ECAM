@@ -9,7 +9,7 @@ import datetime as dt
 import numpy as np
 import wget 
 
-ROOT = os.path.abspath(os.getcwd()) + "/2BA/Informatic/Numerical Computing/Coding/"
+ROOT = os.path.abspath(os.getcwd()) + "/2BA/Informatic/res/"
 FILE = 'COVID19BE.xlsx'
 SHEET = 'MORT'
 URL= 'https://epistat.sciensano.be/Data/COVID19BE.xlsx'
