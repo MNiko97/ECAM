@@ -1,6 +1,6 @@
 # covidplot.py
 # Author: Mitrovic Nikola
-# Version: April 19, 2020
+# Version: April 23, 2020
 
 import openpyxl, os
 import matplotlib.pyplot as plt
@@ -50,7 +50,7 @@ while i < max_row:
     if date == sheet.cell(row = i+1, column = 1).value :
         death += sheet.cell(row = i+1, column = 5).value
     if date != sheet.cell(row = i+1, column = 1).value :
-        data.append([date, death])
+        data.append((date, death))
         death = 0
     i+=1
 print("Processing Completed Successfully !")
@@ -59,9 +59,10 @@ print("Processing Completed Successfully !")
 # Separte year, month and day and store into 'x' values
 # And finally set y values from data    
 print("Setting up plot settings ...")
-dates = [date[0] for date in data]
-x = [dt.datetime.strptime(d, '%Y-%m-%d').date() for d in dates]
-y = [death[1] for death in data]
+dtype = [('dates', 'U10'), ('deaths', int)]
+dataset = np.asarray(data, dtype=dtype)
+x = [dt.datetime.strptime(date, '%Y-%m-%d').date() for date in dataset['dates']]
+y = dataset['deaths']
 
 # Set the figure and axes
 # Create axes label, plot title and grid
