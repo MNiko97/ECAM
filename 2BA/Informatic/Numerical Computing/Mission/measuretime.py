@@ -77,12 +77,13 @@ def minimum_test(n):
         time2 = timer(SETUP, array_min)
         data1.append([i, time1])
         data2.append([i, time2])
-        '''sys.stdout.write('\r')
+        # Progress Bar
+        sys.stdout.write('\r')
         status = i/n * 100
         pad = int(status+1)
         sys.stdout.write("[%-100s] %d%%" % ('='*pad, pad))
         sys.stdout.flush()
-        sleep(0.000000000000000000000000000000000000000000000000000000000001)'''
+        sleep(0.000000000000000000000000000000000000000000000000000000000001)
     return np.asarray(data1), np.asarray(data2)
 
 # Plot all data
