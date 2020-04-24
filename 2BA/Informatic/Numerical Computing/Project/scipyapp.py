@@ -20,18 +20,15 @@ else :
     wget.download(URL, ROOT)
     print("\nDownload Completed Successfully !")'''
 
-
 # Opening COVID19 dataset in xlsx format
 # Select sheet DEATH
 print('Retrieving DATA from ' + FILE + ' ...')
 book = openpyxl.load_workbook(ROOT+FILE)
 sheet = book.get_sheet_by_name(SHEET)
 
-
 max_row = sheet.max_row 
 data = []
-dtype = [('agegroup', 'U5'), ('gender', 'U1'), ('cases', int)]
-print('start computing')
+AGERANGE = ['0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80-89', '90+']
 for i in range(2, max_row+1):
     agegroup = sheet.cell(row = i, column = 4).value
     gender = sheet.cell(row = i, column = 5).value
@@ -40,14 +37,15 @@ for i in range(2, max_row+1):
     if agegroup is not None and gender is not None and cases is not None:
         data.append((agegroup, gender, cases))
 
+dtype = [('agegroup', 'U5'), ('gender', 'U1'), ('cases', int)]
 dataset = np.asarray(data, dtype=dtype)
 
-dt = [('agegroup', int), ('cases', int)]
-new_data = []
+dt = []
+for age in AGERANGE:
+    condition = np.isin(dataset['agegroup'], age)
+    index = np.where(condition)
+    total = dataset["cases"][index].sum()
+    dt.append((age, total))
 
-condition = np.isin(dataset[:, 0], i)
-result = (i, np.asarray(np.where(condition)).size)
-new_data.append(result)
-new_dataset = np.asarray(new_data, dtype=dtype1)
-sortedarray = np.sort(new_dataset, order='cases')
-
+new_dataset = np.asarray(dt, dtype=[('agegroup', 'U5'), ('cases', int)])
+print(new_dataset)
