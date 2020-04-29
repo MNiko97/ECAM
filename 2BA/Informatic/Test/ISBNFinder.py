@@ -79,6 +79,9 @@ for i in range(b):
         json_data.append(book)
     print(str(i+1)+'/'+str(b))
 
-with open(ROOT + 'data.json', 'w', encoding='utf8') as outfile:
+with open(ROOT + 'data.json', 'r+', encoding='utf8') as outfile:
+    json_file = json.load(outfile)
     for book in json_data:
-        json.dump(book, outfile, ensure_ascii=False, indent=1)
+        json_file.update(book)
+        outfile.seek(0)
+        json.dump(json_file, outfile, ensure_ascii=False, indent=2)
