@@ -146,7 +146,7 @@ class AI():
 		availableDirections = []
 		for key, value in directions.items():                       												# By checking first if were not out of bound.
 			if (x+value[0]) >= 0 and (x+value[0]) <= 8 and (y+value[1]) >= 0 and (y+value[1]) <= 8:					# ATTENTION : change 2 by 8 after finishing testing
-				if len(position[x+value[0]][y+value[1]]) > 0 and len(position[x+value[0]][y+value[1]]) <= 5 :       # And if the final position is not on an empty place or full place
+				if len(position[x+value[0]][y+value[1]]) > 0 and len(position[x+value[0]][y+value[1]]) + len(position[x][y]) < 5 :       # And if the final position is not on an empty place or full place
 					availableDirections.append(key)
 		if len(availableDirections) != 0:
 			return [x, y, availableDirections]
