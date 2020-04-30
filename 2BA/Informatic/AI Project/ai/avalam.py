@@ -36,7 +36,6 @@ TIMEOUT = 1
 ROOT = os.path.abspath(os.getcwd()) + "/2BA/Informatic/res/"
 
 class MapPool():
-    
     def __init__(self, position):
         self.size = 20
         self.pool = None
@@ -56,7 +55,7 @@ class MapPool():
             self.pool['busy'].append(pool_object)
             return pool_object
 
-    def return_object(self, pool_object):
+    def give_back(self, pool_object):
         self.pool['busy'].remove(pool_object)
         self.pool['free'].append(pool_object)
 
@@ -65,6 +64,8 @@ class AI():
 		self.timeout = time.time() + TIMEOUT
 		self.pawn = pawn
 		self.position = position
+		self.pool = MapPool(self.position)
+		self.pool.create(self.position)
 
 	def show_map(self, position):
 		for row in position:
@@ -93,10 +94,10 @@ class AI():
 				for move in possibleMoves:
 					x, y, = move[0], move[1]
 					for direction in move[2]:
-						#copy_position = get_pool()
-						new_map, _, _ = self.move(x, y, direction, position)
+						max_copy_position = self.pool.borrow(position)
+						new_map, _, _ = self.move(x, y, direction, max_copy_position)
 						best_score = max(best_score, self.alpha_beta(new_map, current_depth+1, target_depth, alpha, beta, False))
-						#give_back(copy_position)
+						self.pool.give_back(max_copy_position)
 						alpha = max(alpha, best_score)
 					if alpha >= beta:
 						break
@@ -106,9 +107,11 @@ class AI():
 				for move in possibleMoves:
 					x, y, = move[0], move[1]
 					for direction in move[2]:
-						new_map, _, _ = self.move(x, y, direction, position)
+						min_copy_position = self.pool.borrow(position)
+						new_map, _, _ = self.move(x, y, direction, min_copy_position)
 						best_score = min(best_score, self.alpha_beta(new_map, current_depth+1, target_depth, alpha, beta, True))
 						beta = min(beta, best_score)
+						self.pool.give_back(min_copy_position)
 					if alpha >= beta:
 						break
 				return best_score
@@ -244,10 +247,8 @@ def game():
 			print("GAME OVER ! FINAL SCORE : ", ai.getScore(board), " FOR BLACK and ", ai_bad.getScore(board), " FOR RED")
 			running = False
 
-
 """with open(ROOT + 'history.txt', 'w') as output_file:
 	for move in history:
 		output_file.writelines(str(move))"""
 
-#cProfile.run('game()')															# Allow to see time run for every function (for performance)
-game()
+cProfile.run('game()')															# Allow to see time run for every function (for performance)
