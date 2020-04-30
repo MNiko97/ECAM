@@ -3,7 +3,7 @@
 int trPin[] = {7, 5, 3}; 
 int ecPin[] = {6, 4, 2}; 
 
-static int nbSensor = 3; 
+static int nbSensor = 1; 
 static int samples = 10; //don't forget to also modify data_size to match data array !!
 static int responseFactor; //wat is dat ?
 
@@ -91,23 +91,17 @@ float pulseSensor(int trigger, int echo){
 
 float mean(){
   float sum = 0;
-
   for(int i = 0; i < size(); i++){ // parcourir la liste <sampleArray> pour afficher toutes les distances de l'echantillon
     sum += data[i];
   }
-
   float mean = sum / size();
-
   return mean;
-
 }
 
 void sort(){
   bool tabSorted = false;
-
   while(tabSorted == false){
     tabSorted = true;
-
     for(int i = 0; i < size(); i++){
       if(data[i] < data[i + 1]){
         float tmp = data[i + 1];

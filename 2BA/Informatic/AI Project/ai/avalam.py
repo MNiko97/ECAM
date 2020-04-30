@@ -1,4 +1,4 @@
-import copy, cProfile
+import copy, cProfile, time
 from random  import randint
 
 map = [
@@ -13,6 +13,18 @@ map = [
 		[ [],  [],  [],  [], [1], [0],  [],  [],  []]
 	]
 
+test1 = [
+		[ [1], [],  [0]],
+		[ [], [0], []],
+		[ [1], [], []]
+	]
+
+test2 = [
+		[ [], [0],  []],
+		[ [], [0], []],
+		[ [1], [1], []]
+	]
+
 directions = {'RIGHT': [0, 1], 'LEFT': [0, -1], 'UP': [-1, 0], 'DOWN': [1, 0], 
 'UPRIGHT': [-1, 1], 'UPLEFT': [-1, -1], 'DOWNRIGHT': [1, 1], 'DOWNLEFT': [1, -1]}
 
@@ -22,64 +34,48 @@ AI_MODE = 1
 RANDOM_MODE = 0
 TIMEOUT = 1000
 
-'''class Game():
-	def __init__(self, map):
-		self.map = map
-		self.turn = 0
-		self.running = True
-		self.AI_player = AI(self.map, BLACKPAWN)
-		self.RANDOM_player = AI(self.map, REDPAWN)
-
-	def run(self):
-		while self.running:
-			if self.turn == 0 :
-				self.map, self.running = self.AI_player.run(self.map)
-				self.turn = 1
-				print("AI Turn : ")
-				for row in self.map:
-					print(row)
-			else:
-				self.map, self.running = self.RANDOM_player.run(self.map)
-				self.turn = 0
-				print("Opponent Turn : ")
-				for row in self.map:
-					print(row)				
-		print("GAME OVER ! Score : ")
-		print("AI : ", self.AI_player.getScore(self.map), " Opponent : ", self.RANDOM_player.getScore(self.map))
-			
-	def show_map(self):
-		for row in self.map:
-			print(row)'''
-
 class AI():
 	def __init__(self, map, pawn):
-
+		self.timeout = time.time() + 8
 		self.map = copy.deepcopy(map)
 		self.pawn = pawn
 		self.score = self.getScore(self.map)
 
-	def update(self, position):
-		self.map = position
-		return self.map
-	
 	def show_map(self, position):
 		for row in position:
 			print(row)
-
-	def game_state(self, position):
-		available_moves = self.availableMoves(position)
-		for move in available_moves:
-			if len(move[2]) !=0:
-				return True
-		return False
+	
+	def update(self, position):
+		self.map = position
 
 	def run(self):	
-		print("_______________ALPHABETA________________")
-		print(self.best_move(self.map, 0, 1, -1000, 1000))	
+		for i in range(1, 10):
+			print("depth : ", i)
+			x1, y1, x2, y2 = self.best_move(self.map, 0, i, -1000, 1000)
+			if time.time() < self.timeout:
+				move = {"move": {"from": [x1, y1], "to": [x2, y2]}, "message": "I'm the alpha beta AI !"}
+			else:
+				break
+		print("My move : ", move)
+		return move
 
+	def random(self):	
+		self.show_map(self.map)
+		available_moves = self.availableMoves(self.map)
+		random_pawn = randint(0, len(available_moves))
+		random_direction = randint(0, len(available_moves[random_pawn][2])-1)
+		x, y = available_moves[random_pawn][0], available_moves[random_pawn][1]
+		direction = available_moves[random_pawn][2][random_direction]
+		self.map, x2, y2 = self.move(x, y, direction, self.map)
+		move = {"move": {"from": [x, y], "to": [x2, y2]}, "message": "I'm am the random AI !"}
+		print("My move : ", move)
+		self.show_map(self.map)
+		return move
 
 	def alpha_beta(self, position, current_depth, target_depth, alpha, beta, my_turn):
-		possibleMoves = self.availableMoves(position)												# Store all the possible moves
+		if time.time() > self.timeout:
+			return 0	
+		possibleMoves = self.availableMoves(position)											
 		if current_depth == target_depth or not possibleMoves:
 			return self.getScore(position)
 		else: 
@@ -131,6 +127,8 @@ class AI():
 				return best_score
 
 	def best_move(self, position, current_depth, target_depth, alpha, beta):
+		if time.time() > self.timeout:
+			return 0	
 		possibleMoves = self.availableMoves(position)												# Store all the possible moves
 		if current_depth == target_depth or not possibleMoves:
 			return self.getScore(position)
@@ -144,9 +142,9 @@ class AI():
 					if new_score > best_score:
 						best_move = x, y, x2, y2
 						best_score = new_score
-			return best_move, best_score
+			return best_move
 		
-	def best_move_1(self, current_depth, target_depth, position):
+	def best_move_1(self, position, current_depth, target_depth):
 		possibleMoves = self.availableMoves(position)
 		count = 1
 		if current_depth == target_depth or not possibleMoves:
@@ -186,13 +184,12 @@ class AI():
 					available_pawn.append([x,y])
 		return available_pawn
 
-	def checkDirections(self, x, y, position):
+	def checkDirections(self, x, y, position):																		# Check if we move a pawn in a certain direction, the final position is possible.  	
 		availableDirections = []
-		for key, value in directions.items():                       				# Check if we move a pawn in a certain direction, the final position is possible. 
-			if (x+value[0]) >= 0 and (y+value[1]) >= 0:             				# By checking first if were not out of bound.
-				if (x+value[0]) <= 8 and (y+value[1]) <= 8:
-					if len(position[x+value[0]][y+value[1]]) > 0 and len(position[x+value[0]][y+value[1]]) <= 5 :        			# And if the final position is not on an empty place or full place
-						availableDirections.append(key)
+		for key, value in directions.items():                       												# By checking first if were not out of bound.
+			if (x+value[0]) >= 0 and (x+value[0]) <= 8 and (y+value[1]) >= 0 and (y+value[1]) <= 8:					# ATTENTION : change 2 by 8 after finishing testing
+				if len(position[x+value[0]][y+value[1]]) > 0 and len(position[x+value[0]][y+value[1]]) <= 5 :       # And if the final position is not on an empty place or full place
+					availableDirections.append(key)
 		if len(availableDirections) != 0:
 			return [x, y, availableDirections]
 		else :
@@ -209,7 +206,7 @@ class AI():
 			current_position[x2][y2].append(pawn)
 
 		current_position[x1][y1] = []
-		return current_position, x2, y2                                         			# Remove previous location of the pawn.
+		return current_position, x2, y2                                       			# Remove previous location of the pawn.
 	
 	def getScore(self, positions):
 		redScore = 0
@@ -223,10 +220,56 @@ class AI():
 					else:															# Or red
 						redScore += 1
 		if self.pawn == 1:
-			return blackScore-redScore												# Return black pawn score
+			return  blackScore-redScore											# Return black pawn score
 		else :
 			return redScore-blackScore												# Return red pawn score
 
+def update(x1, y1, x2, y2):
+	map[x2][y2].append(map[x1][y1][0])
+	del map[x1][y1][0]
+	return map
+
+def unpack(move):
+	coordinate = move["move"]
+	start = coordinate["from"]
+	end = coordinate["to"]
+	x1 = start[0]
+	y1 = start[1]
+	x2 = end[0]
+	y2 = end[1]
+	move = (x1, y1, x2, y2)
+	return move
+
+running = True
+my_turn = True
 ai = AI(map, BLACKPAWN)
-ai.run()
+ai_bad = AI(map, REDPAWN)
+
+while running:
+	state = len(ai.availableMoves(map))
+	if state != 0:
+		if my_turn:
+			print("BLACK TURN")
+			ai.update(map)
+			data = ai.run()
+			data = ai.run()
+			x1, y1, x2, y2 = unpack(data)
+			update(x1, y1, x2, y2)
+			ai.show_map(map)
+			my_turn = False
+		else:
+			print("RED TURN")
+			ai.update(map)
+			ai_bad.run()
+			data = ai.run()
+			x1, y1, x2, y2 = unpack(data)
+			update(x1, y1, x2, y2)
+			ai.show_map(map)
+			my_turn = True
+		data = ai.run()
+
+	else:
+		print("GAME OVER ! FINAL SCORE : ", ai.getScore(map), " FOR BLACK and ", ai_bad.getScore(map), " FOR RED")
+		running = False
+
 #cProfile.run('ai.run()')															# Allow to see time run for every function (for performance)

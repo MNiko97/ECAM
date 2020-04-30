@@ -142,13 +142,12 @@ class AI():
 					available_pawn.append([x,y])
 		return available_pawn
 
-	def checkDirections(self, x, y, position):
+	def checkDirections(self, x, y, position):																		# Check if we move a pawn in a certain direction, the final position is possible.  	
 		availableDirections = []
-		for key, value in directions.items():                       				# Check if we move a pawn in a certain direction, the final position is possible. 
-			if (x+value[0]) >= 0 and (y+value[1]) >= 0:             				# By checking first if were not out of bound.
-				if (x+value[0]) <= 8 and (y+value[1]) <= 8:
-					if len(position[x+value[0]][y+value[1]]) > 0 and len(position[x+value[0]][y+value[1]]) <= 5 :        			# And if the final position is not on an empty place or full place
-						availableDirections.append(key)
+		for key, value in directions.items():                       												# By checking first if were not out of bound.
+			if (x+value[0]) >= 0 and (x+value[0]) <= 8 and (y+value[1]) >= 0 and (y+value[1]) <= 8:					# ATTENTION : change 2 by 8 after finishing testing
+				if len(position[x+value[0]][y+value[1]]) > 0 and len(position[x+value[0]][y+value[1]]) <= 5 :       # And if the final position is not on an empty place or full place
+					availableDirections.append(key)
 		if len(availableDirections) != 0:
 			return [x, y, availableDirections]
 		else :
