@@ -41,7 +41,7 @@ int measure(int index){
   delayMicroseconds (10);
   digitalWrite (trigPin[index], LOW);
   int duration = pulseIn (echoPin[index], HIGH);
-  int distance = (duration/58.2);
+  int distance = (duration*0.0340)/2;
   if (distance < 0){
     return 0;
   }
