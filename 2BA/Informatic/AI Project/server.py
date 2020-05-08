@@ -66,7 +66,7 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         game = sys.argv[1]
     else:
-        game = 'avalam'
+        game = 'matches'
 
     with open(os.path.join(getRootDir(),f'public/games/{game}.js')) as file:
         gameJS = file.read().encode('utf8')
