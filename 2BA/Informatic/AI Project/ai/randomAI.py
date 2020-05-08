@@ -1,27 +1,24 @@
 import copy, time
 from random import randint
 
-TIMEOUT = 2
 directions = {'RIGHT': [0, 1], 'LEFT': [0, -1], 'UP': [-1, 0], 'DOWN': [1, 0], 'UPRIGHT': [-1, 1], 'UPLEFT': [-1, -1],
               'DOWNRIGHT': [1, 1], 'DOWNLEFT': [1, -1]}
 
-class AI():
+class AI:
     def __init__(self, position, pawn):
-        self.timeout = time.time() + TIMEOUT
         self.pawn = pawn
         self.position = position
-        self.pool = MapPool(self.position)
-        self.pool.create(self.position)
+        self.map = position
 
     def run(self):	
-		available_moves = self.availableMoves(self.map)
-		random_pawn = randint(0, len(available_moves))
-		random_direction = randint(0, len(available_moves[random_pawn][2])-1)
-		x, y = available_moves[random_pawn][0], available_moves[random_pawn][1]
-		direction = available_moves[random_pawn][2][random_direction]
-		self.map, x2, y2 = self.move(x, y, direction, self.map)
-		move = {"move": {"from": [x, y], "to": [x2, y2]}, "message": "I'm am the random AI !"}
-		return move
+        available_moves = self.availableMoves(self.map)
+        random_pawn = randint(0, len(available_moves))
+        random_direction = randint(0, len(available_moves[random_pawn][2])-1)
+        x, y = available_moves[random_pawn][0], available_moves[random_pawn][1]
+        direction = available_moves[random_pawn][2][random_direction]
+        self.map, x2, y2 = self.move(x, y, direction, self.map)
+        move = {"move": {"from": [x, y], "to": [x2, y2]}, "message": "I'm am the random AI !"}
+        return move
 
     def availableMoves(self, position):
         available_moves = []
