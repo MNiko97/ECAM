@@ -1,7 +1,6 @@
 import socket, os, json, transmitJSON, cherrypy, sys, copy, time
 from random import randint
-from ai.avalam import AI
-from ai.map_pool import MapPool
+from ai.ai import AI
 
 HOST = '0.0.0.0'
 PORT = 8081
@@ -62,6 +61,3 @@ if __name__ == "__main__":
 
     cherrypy.config.update({'server.socket_host': HOST, 'server.socket_port': port})
     cherrypy.quickstart(Server())
-
-ai = AI(ORIGINAL, 1)
-ai.run()

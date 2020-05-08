@@ -1,6 +1,6 @@
 import copy, cProfile, time, os
 from random import randint
-from map_pool import MapPool
+from .map_pool import MapPool
 
 map = [
     [[], [], [], [0], [1], [], [], [], []],
@@ -151,7 +151,7 @@ class AI(MapPool):
             if 0 <= (x + value[0]) <= SIZE and 0 <= (
                     y + value[1]) <= SIZE:  # ATTENTION : change 2 by 8 after finishing testing
                 if len(position[x + value[0]][y + value[1]]) > 0 and len(position[x + value[0]][y + value[1]]) + len(
-                        position[x][y]) < 5:  # And if the final position is not on an empty place or full place
+                        position[x][y]) <= 5:  # And if the final position is not on an empty place or full place
                     availableDirections.append(key)
         if len(availableDirections) != 0:
             return [x, y, availableDirections]
@@ -185,7 +185,7 @@ class AI(MapPool):
             return redScore - blackScore  # Return red pawn score
 
 
-class AItest:
+class AItest(MapPool):
     def __init__(self, position, pawn):
         self.timeout = time.time() + TIMEOUT
         self.pawn = pawn
