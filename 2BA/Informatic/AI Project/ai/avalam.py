@@ -1,5 +1,6 @@
 import copy, cProfile, time, os
 from random import randint
+from map_pool import MapPool
 
 map = [
     [[], [], [], [0], [1], [], [], [], []],
@@ -41,37 +42,7 @@ SIZE = 8
 ROOT = os.path.abspath(os.getcwd()) + "/2BA/Informatic/res/"
 
 
-class MapPool:
-    def __init__(self, position):
-        self.size = 5
-        self.pool = None
-
-    def create(self, position):
-        self.pool = {'free': [], 'busy': []}
-        for i in range(self.size):
-            self.pool['free'].append(copy.deepcopy(position))
-
-    def borrow(self, data):
-        if not self.pool:
-            self.create(data)
-        if not self.pool['free']:
-            return None
-        else:
-            pool_object = self.pool['free'].pop()
-            self.pool['busy'].append(pool_object)
-            for i in range(len(data)):
-                for j in range(len(data)):
-                    pool_object[i][j] = []
-                    for item in data[i][j]:
-                        pool_object[i][j].append(item)
-            return pool_object
-
-    def give_back(self, pool_object):
-        self.pool['busy'].remove(pool_object)
-        self.pool['free'].append(pool_object)
-
-
-class AI:
+class AI(MapPool):
     def __init__(self, position, pawn):
         self.timeout = time.time() + TIMEOUT
         self.pawn = pawn
@@ -381,7 +352,6 @@ class AItest:
                 if len(position[x + value[0]][y + value[1]]) > 0 and len(position[x + value[0]][y + value[1]]) + len(position[x][y]) <= 5:  # And if the final position is not on an empty place or full place
                     return True
         return False
-
 
     def oldScore(self, positions):
         blackturret = {'1': [0], '2': [0], '3': [0], '4': [0], '5': [0]}
