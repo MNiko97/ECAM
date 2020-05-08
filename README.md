@@ -1,6 +1,4 @@
-## ECAM
-
-## Computer Science Project
+## ECAM Computer Science Project
 
 Here are all the project for the 2nd Bachelor at ECAM for the following courses :
 
