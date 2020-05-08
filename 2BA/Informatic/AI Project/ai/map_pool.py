@@ -2,7 +2,7 @@ import copy
 
 class MapPool:
     def __init__(self, position):
-        self.size = 5
+        self.size = 20
         self.pool = None
 
     def create(self, position):

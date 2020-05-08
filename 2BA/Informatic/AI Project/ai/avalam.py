@@ -37,7 +37,7 @@ directions = {'RIGHT': [0, 1], 'LEFT': [0, -1], 'UP': [-1, 0], 'DOWN': [1, 0], '
 
 BLACKPAWN = 1
 REDPAWN = 0
-TIMEOUT = 2
+TIMEOUT = 9
 SIZE = 8
 ROOT = os.path.abspath(os.getcwd()) + "/2BA/Informatic/res/"
 
@@ -141,7 +141,7 @@ class AI():
         available_pawn = []
         for x in range(len(position)):
             for y in range(len(position)):
-                if 0 < len(position[x][y]) < 5:
+                if 0 < len(position[x][y]) <= 5:
                     available_pawn.append([x, y])
         return available_pawn
 
@@ -159,15 +159,19 @@ class AI():
             return None
 
     def move(self, x1, y1, direction, position):  # Takes starting coordinate of the pawn and move it in the direction mentionned.
-        for key, value in directions.items():
-            if direction == key:
-                x2 = x1 + value[0]  # Find the moving coordinates for the pawn.
-                y2 = y1 + value[1]
+        try:
+            for key, value in directions.items():
+                if direction == key:
+                    x2 = x1 + value[0]  # Find the moving coordinates for the pawn.
+                    y2 = y1 + value[1]
         
-        for pawn in position[x1][y1]:  # Move the pawn to the new coordinate.
-            position[x2][y2].append(pawn)
-        position[x1][y1] = []
-        return position, x2, y2  # Remove previous location of the pawn.
+            for pawn in position[x1][y1]:  # Move the pawn to the new coordinate.
+                position[x2][y2].append(pawn)
+            position[x1][y1] = []
+            return position, x2, y2  # Remove previous location of the pawn.
+        except :
+            print("erreur")
+            print(x1, x2, y1, y2, position)
 
     def getScore(self, positions):
         redScore = 0
@@ -473,4 +477,16 @@ test4 = [
     [[1], [0, 1, 1, 0, 1], [1, 0, 1, 1, 1]]
 ]
 
-game(map)
+debug = [
+    [[],[],[],[],[],[],[],[],[]],
+    [[],[],[],[],[],[],[],[],[]],
+    [[],[],[],[],[],[],[1,1,1,0],[],[1,1,0]],
+    [[],[],[0,1,1,0,0],[],[],[],[],[1,1,0,0],[]],
+    [[],[],[1,1,0],[],[],[0,1,1,1,0],[],[0,0,0],[]],
+    [[],[],[],[],[0,1],[],[0],[],[]],
+    [[1,1,0],[0],[],[],[],[0],[],[],[]],
+    [[],[],[0],[1,1,0],[0,0,1,0],[1,1,1],[],[],[]],
+    [[],[],[],[],[1],[0],[],[],[]]
+]
+ai = AI(debug, BLACKPAWN)
+ai.run()
