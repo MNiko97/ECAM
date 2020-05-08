@@ -1,9 +1,9 @@
 import socket, os, json, transmitJSON, cherrypy, sys, copy, time
 from random import randint
-from ai.randomAI import AI
+from ai.ai import AI
 
 HOST = '0.0.0.0'
-PORT = 8081
+PORT = 8082
 ROOT = os.path.abspath(os.getcwd())
 
 ORIGINAL = [

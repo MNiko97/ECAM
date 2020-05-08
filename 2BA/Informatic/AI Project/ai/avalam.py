@@ -1,6 +1,6 @@
 import copy, cProfile, time, os
 from random import randint
-from .map_pool import MapPool
+from map_pool import MapPool
 
 map = [
     [[], [], [], [0], [1], [], [], [], []],
@@ -42,7 +42,7 @@ SIZE = 8
 ROOT = os.path.abspath(os.getcwd()) + "/2BA/Informatic/res/"
 
 
-class AI(MapPool):
+class AI():
     def __init__(self, position, pawn):
         self.timeout = time.time() + TIMEOUT
         self.pawn = pawn
@@ -163,6 +163,7 @@ class AI(MapPool):
             if direction == key:
                 x2 = x1 + value[0]  # Find the moving coordinates for the pawn.
                 y2 = y1 + value[1]
+        
         for pawn in position[x1][y1]:  # Move the pawn to the new coordinate.
             position[x2][y2].append(pawn)
         position[x1][y1] = []
@@ -440,7 +441,7 @@ def game(board):
         if state != 0:
             if my_turn:
                 print("BLACK TURN")
-                ai = AItest(board, BLACKPAWN)
+                ai = AI(board, BLACKPAWN)
                 data = ai.run()
                 x1, y1, x2, y2 = unpack(data)
                 update(x1, y1, x2, y2, board)

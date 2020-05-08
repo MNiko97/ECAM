@@ -21,7 +21,7 @@ class AI(MapPool):
                 res = self.best_move(self.position, 0, i, -1000, 1000)
                 print("result :", res)
                 x1, y1, x2, y2 = res
-                move = {"move": {"from": [x1, y1], "to": [x2, y2]}, "message": "I'm the alpha beta AI !"}
+                move = {"move": {"from": [x1, y1], "to": [x2, y2]}, "message": (x1, y1, x2, y2)}
             else:
                 break
         print("My move :", move)
@@ -101,7 +101,7 @@ class AI(MapPool):
         available_pawn = []
         for x in range(len(position)):
             for y in range(len(position)):
-                if 0 < len(position[x][y]) < 5:
+                if 0 < len(position[x][y]) <= 5:
                     available_pawn.append([x, y])
         return available_pawn
 
@@ -122,6 +122,8 @@ class AI(MapPool):
                 x2 = x1 + value[0]  # Find the moving coordinates for the pawn.
                 y2 = y1 + value[1]
         for pawn in position[x1][y1]:  # Move the pawn to the new coordinate.
+            if pawn is None:
+                print(position[x1][y1], x1, y1, x2, y2, position)
             position[x2][y2].append(pawn)
         position[x1][y1] = []
         return position, x2, y2  # Remove previous location of the pawn.
