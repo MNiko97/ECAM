@@ -11,7 +11,4 @@ client.connect((HOST, PORT))
 with open ('profile.json', 'r') as file:
     data = json.load(file)
     
-with open ('opponent.json', 'r') as file:
-    data2 = json.load(file)
-    
 sendJSON(client, data)

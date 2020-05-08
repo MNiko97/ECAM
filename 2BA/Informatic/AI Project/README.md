@@ -1,34 +1,29 @@
 # AI Server
 
+A Simple AI Server implementing minimax and alpha-beta pruning algorithm on the game AVALAM.
+
+Authors: Mitrovic Nikola [18365]
+
+Date: 5/08/2020
+
 ## Installation
 
-Clone the repository on your computer
+Clone the repository and copy all files and folder in your main directory.
 
-## Add Games
+## Starting the AI
 
-Add a script in the `/public/games` directory
+First launch `subcribe.py` file to subscribe the player to the main server using 
+the `profile.json` file that contains profile data.
+Then you can launch `AI_Server.py` that is a small server that host the AI algorithm.
 
-## Start the Front End
 
-The `server.py` file is a small server that serve the frontend.
-
-It need python 3.X and `cherrypy`. You can start it with:
+## File Check
+To successfully work, check the folowing files in the `ai` folder :
 
 ```
-python server.py game
+__init__.py
+ai.py
+map_pool.py
 ```
 
-Where `game` must be replaced by one of the games defined in `/public/games`
-
-## Subscribe
-
-Send a TCP message to the 3001 port with a JSON content like:
-
-```json
-{
-	"matricules": ["11111", "22222"],
-	"port": 1234,
-	"name": "Terminator"
-}
-```
-
+Please don't modify folder name of move files outside the folder.

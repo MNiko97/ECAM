@@ -1,22 +1,9 @@
-import socket, os, json, transmitJSON, cherrypy, sys, copy, time
+import socket, json, transmitJSON, cherrypy, sys, copy, time
 from random import randint
 from ai.ai import AI
 
 HOST = '0.0.0.0'
 PORT = 8081
-ROOT = os.path.abspath(os.getcwd())
-
-ORIGINAL = [
-		[ [],  [],  [], [0], [1],  [],  [],  [],  []],
-		[ [],  [],  [], [1], [0], [1], [0], [1],  []],
-		[ [],  [], [1], [0], [1], [0], [1], [0], [1]],
-		[ [],  [], [0], [1], [0], [1], [0], [1], [0]],
-		[ [], [0], [1], [0],  [], [0], [1], [0],  []],
-		[[0], [1], [0], [1], [0], [1], [0],  [],  []],
-		[[1], [0], [1], [0], [1], [0], [1],  [],  []],
-		[ [], [1], [0], [1], [0], [1],  [],  [],  []],
-		[ [],  [],  [],  [], [1], [0],  [],  [],  []]
-	]
 
 directions = {'RIGHT': [0, 1], 'LEFT': [0, -1], 'UP': [-1, 0], 'DOWN': [1, 0],
               'UPRIGHT': [-1, 1], 'UPLEFT': [-1, -1], 'DOWNRIGHT': [1, 1], 'DOWNLEFT': [1, -1]}

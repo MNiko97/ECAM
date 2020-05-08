@@ -1,18 +1,18 @@
 [
 	{
-		"port": 8082,
-		"name": "Max",
-		"ip": "127.0.0.1",
-		"matricules": [
-			"18366"
-		]
-	},
-	{
 		"port": 8081,
-		"name": "Niko",
+		"name": "Nikola",
 		"ip": "127.0.0.1",
 		"matricules": [
 			"18365"
+		]
+	},
+	{
+		"port": 8082,
+		"name": "Ennemy",
+		"ip": "127.0.0.1",
+		"matricules": [
+			"18366"
 		]
 	}
 ]
