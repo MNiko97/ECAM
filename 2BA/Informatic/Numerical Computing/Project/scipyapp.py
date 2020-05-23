@@ -1,5 +1,6 @@
 from scipy.stats import poisson
 import matplotlib.pyplot as plt 
+from matplotlib.patches import Rectangle
 import numpy as np 
 import os, openpyxl, wget
 
@@ -40,12 +41,47 @@ for i in range(2, max_row+1):
 dtype = [('agegroup', 'U5'), ('gender', 'U1'), ('cases', int)]
 dataset = np.asarray(data, dtype=dtype)
 
-dt = []
-for age in AGERANGE:
-    condition = np.isin(dataset['agegroup'], age)
-    index = np.where(condition)
-    total = dataset["cases"][index].sum()
-    dt.append((age, total))
+def ageSort(dataset, sex):
+    dt = []
+    dataset = np.delete(dataset, np.where(dataset['gender'] != sex))
+    for age in AGERANGE:
+        index = np.where(np.isin(dataset['agegroup'], age))
+        total = dataset["cases"][index].sum()
+        dt.append((age, total))
+    data = np.asarray(dt, dtype=[('agegroup', 'U5'), ('cases', int)])
+    return data
 
-new_dataset = np.asarray(dt, dtype=[('agegroup', 'U5'), ('cases', int)])
-print(new_dataset)
+def plot():
+    men_dataset = ageSort(dataset, 'M')
+    women_dataset = ageSort(dataset, 'F')
+
+    fig, ax = plt.subplots()
+    men = ax.bar(AGERANGE, men_dataset['cases'],  align='center', label='Men', picker=True)
+    women = ax.bar(AGERANGE, women_dataset['cases'], align='center', bottom=men_dataset['cases'], label='Women', picker=True)
+    
+    title = 'COVID-19 Contamination in Belgium'
+    ax.set_title(title, fontweight='bold')
+    ax.set_xlabel('Age Class', fontsize='12')
+    ax.set_ylabel('Infected', fontsize='12')
+    ax.grid()
+    ax.legend()
+    
+    cid = fig.canvas.mpl_connect('pick_event', onpick)
+    plt.show()
+
+def onpick(event):
+    rect = event.artist
+    
+    handles,labels = rect.axes.get_legend_handles_labels()
+
+    # Search for current artist within all plot groups
+    label = [label for h,label in zip(handles, labels) if rect in h.get_children()]
+
+    if len(label) == 1:
+        label = label[0]
+    else:
+        label = None
+    plt.text(label)
+    print (label)
+
+plot()
