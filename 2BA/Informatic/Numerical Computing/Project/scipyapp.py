@@ -1,4 +1,3 @@
-from scipy.stats import poisson
 import matplotlib.pyplot as plt 
 from matplotlib.patches import Rectangle
 import numpy as np 
@@ -66,22 +65,31 @@ def plot():
     ax.grid()
     ax.legend()
     
-    cid = fig.canvas.mpl_connect('pick_event', onpick)
+    
+    cid = fig.canvas.mpl_connect('pick_event', onpick1)
     plt.show()
 
 def onpick(event):
     rect = event.artist
-    
+    print("rect : ", rect)
     handles,labels = rect.axes.get_legend_handles_labels()
-
+    print("handles and labels : ", handles, " and ", labels)
     # Search for current artist within all plot groups
     label = [label for h,label in zip(handles, labels) if rect in h.get_children()]
-
+    print(label)
     if len(label) == 1:
         label = label[0]
+        plt.text(50, 50, label[0])
     else:
         label = None
-    plt.text(label)
     print (label)
 
+
+def onpick1(event):   
+    if isinstance(event.artist, Rectangle):
+        patch = event.artist
+        path = patch.get_path()
+        print('onpick1 patch:', path)
+        
+        
 plot()

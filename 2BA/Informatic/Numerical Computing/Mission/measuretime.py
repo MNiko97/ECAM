@@ -1,4 +1,3 @@
-# measuretime.py
 # Author: Mitrovic Nikola
 # Version: April 23, 2020
 

@@ -1,64 +1,43 @@
-import matplotlib.pyplot as plt
-from mpl_toolkits import mplot3d
+# Author: Mitrovic Nikola
+# Version: May 27, 2020
+
 import numpy as np
+import matplotlib.pyplot as plt
 
-def f(x, y):
-    return np.sin(np.sqrt(x ** 2 + y ** 2))
+sampling = 10
+interval = 1/sampling
+frequency = 1
+ncol=sampling**2
+nrow=20
 
-x = np.linspace(-6, 6, 30)
-y = np.linspace(-6, 6, 30)
-X, Y = np.meshgrid(x, y)
-Z = f(X, Y)
+time = np.arange(0, sampling, interval)
+signal = np.sin(2*np.pi*frequency*time)
 
-fig = plt.figure()
-ax = plt.axes(projection='3d')
-ax.contour3D(X, Y, Z, 50, cmap='binary')
-ax.set_xlabel('x')
-ax.set_ylabel('y')
-ax.set_zlabel('z')
+noise = np.random.normal(0,1,ncol*nrow).reshape(nrow, ncol)
+signal_noisy = signal + noise.mean(axis=0)
+
+fftSignal = np.fft.fft(signal/len(signal))
+fftSignal = fftSignal[range(int(len(signal)/2))]
+
+timePeriod  = len(signal)/sampling
+frequencies = np.arange(int(len(signal)/2))/timePeriod
+
+figure, axs = plt.subplots(3)
+plt.subplots_adjust(hspace=1)
+
+axs[0].set_title('Sine Wave')
+axs[0].set_xlabel('Time')
+axs[0].set_ylabel('Amplitude')
+axs[0].plot(time, signal)
+
+axs[1].set_title('Noisy Sine Wave')
+axs[1].set_xlabel('Time')
+axs[1].set_ylabel('Amplitude')
+axs[1].plot(time, signal_noisy)
+
+axs[2].set_title('FFT Transform Sine Wave')
+axs[2].set_xlabel('Frequency')
+axs[2].set_ylabel('Amplitude')
+axs[2].plot(frequencies, abs(fftSignal))
+
 plt.show()
-
-
-'''class LineDrawer(object):
-    lines = []
-    def draw_line(self, startx,starty):
-        ax = plt.gca()
-        xy = plt.ginput(1)
-        x = [startx,xy[0][0]]
-        y = [starty,xy[0][1]]
-        line = plt.plot(x,y)
-        ax.figure.canvas.draw()
-
-        self.lines.append(line)
-
-
-def onclick(event):
-    if event.dblclick:
-        if event.button == 1:
-            # Draw line
-            ld = LineDrawer()
-            ld.draw_line(event.xdata,event.ydata) # here you click on the plot
-        elif event.button == 3:
-            # Write to figure
-            plt.figtext(3, 8, 'boxed italics text in data coords', style='italic', bbox={'facecolor':'red', 'alpha':0.5, 'pad':10})
-            circ = plt.Circle((event.xdata, event.ydata), radius=0.07, color='g')
-            ax.add_patch(circ)
-            ax.figure.canvas.draw()
-        else:
-            pass # Do nothing
-
-
-def onpick(event):
-    thisline = event.artist
-    xdata = thisline.get_xdata()
-    ydata = thisline.get_ydata()
-    ind = event.ind
-    print ('onpick points:', zip(xdata[ind], ydata[ind]))
-
-
-
-fig, ax = plt.subplots()
-
-connection_id = fig.canvas.mpl_connect('button_press_event', onclick)
-fig.canvas.mpl_connect('pick_event', onpick)
-plt.show()'''
