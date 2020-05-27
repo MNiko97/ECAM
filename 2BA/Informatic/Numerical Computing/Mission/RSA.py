@@ -1,11 +1,12 @@
 '''
-Mission 2:
-RSA Encryption
+Mission 2: RSA Encryption
+Author: Mitrovic Nikola
+Version: April 10, 2020
 '''
 import numpy as np 
 import random as r
 
-def isPrime(n):                                 #check if a number is coprime
+def isPrime(n):                                 
     if n == 2:
         return True
     if n < 2 or n % 2 == 0:
@@ -16,14 +17,14 @@ def isPrime(n):                                 #check if a number is coprime
     return True
 
 def isCoPrime(a, b): 
-    greatCommonDivisor = lambda a, b: a if not b else greatCommonDivisor(b, a%b)    #return the value of the greatest common divisor
-    if (greatCommonDivisor(a, b) == 1):                                             #definition of coprime number
+    greatCommonDivisor = lambda a, b: a if not b else greatCommonDivisor(b, a%b)    # Return the value of the greatest common divisor
+    if (greatCommonDivisor(a, b) == 1):                                             # Definition of coprime number
         return True
     else:
         return False
 
 def generatePrimeNumber(bitSize):               
-    n = r.getrandbits(bitSize)                  #generate random bitsized number
+    n = r.getrandbits(bitSize)                  # Generate random bitsized number
     while not isPrime(n):
         n = r.getrandbits(bitSize)
     return n
@@ -34,14 +35,14 @@ def generatePublicKey(bitSize):
     n = p*q
     phi = (p-1)*(q-1)
     e = r.randint(1, phi)
-    while not isCoPrime(e, phi) or not isCoPrime(e, n):         #In RSA encryption e has to be coprime with phi and n
+    while not isCoPrime(e, phi) or not isCoPrime(e, n):         # In RSA encryption e has to be coprime with phi and n
         e = r.randint(1, phi)
     return (e, n), phi
 
 def generatePrivateKey(publicKey, phi):
     e, n = publicKey
     array = np.array([[phi, e], [phi, 1]]) 
-    while array[0, 1] != 1 :                                    #To find d whe have to resolve this equation : e^d mod(phi) = 1
+    while array[0, 1] != 1 :                                    # To find d we have to resolve this equation : e^d mod(phi) = 1
         divider = int(array[0, 0]/array[0, 1])
         a = array[:, 1]*divider
         b = array[:, 0] - a
@@ -55,12 +56,12 @@ def generatePrivateKey(publicKey, phi):
 def encrypt(publicKey, msg):
     e, n = publicKey
     cipheredMessage = [(ord(letter) ** e) % n for letter in msg]     
-    decodedMessage = [chr(byteLetter) for byteLetter in cipheredMessage]       #ord() encode every letter in the message with utf8 then cipher with the formula (msg^e)mod(n)        
+    decodedMessage = [chr(byteLetter) for byteLetter in cipheredMessage]       # ord() encode every letter in the message with utf8 then cipher with the formula (msg^e)mod(n)        
     return cipheredMessage, decodedMessage
 
 def decrypt(privateKey, cipheredMessage):
     d, n = privateKey
-    decryptedMessage = [chr((char ** d) % n) for char in cipheredMessage]       #char() decode very byte into actual character with utf8 then decipher with the formula (msg^d)mod(n)
+    decryptedMessage = [chr((char ** d) % n) for char in cipheredMessage]       # char() decode very byte into actual character with utf8 then decipher with the formula (msg^d)mod(n)
     return decryptedMessage
 
 def main(bits):

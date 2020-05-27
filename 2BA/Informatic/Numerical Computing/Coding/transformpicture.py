@@ -36,6 +36,8 @@ def crop(image, point1, point2):
 # Inverting color, cropping image and
 # Darkening to 50% of the original value
 inverted_image = invertcolor(im) 
-cropped_image = crop(inverted_image, (325, 65), (1120, 905))
-final_image = dark(cropped_image, 50)
-imageio.imwrite(ROOT + 'transformed.jpg', final_image.astype(np.uint8))
+cropped_image = crop(im, (325, 65), (1120, 905))
+final_image = dark(im, 1)
+imageio.imwrite(ROOT + 'transformed1.jpg', inverted_image.astype(np.uint8))
+imageio.imwrite(ROOT + 'transformed2.jpg', cropped_image.astype(np.uint8))
+imageio.imwrite(ROOT + 'transformed3.jpg', final_image.astype(np.uint8))

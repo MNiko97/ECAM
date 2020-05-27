@@ -8,7 +8,7 @@ FILE = 'COVID19BE.xlsx'
 SHEET = 'CASES_AGESEX'
 URL= 'https://epistat.sciensano.be/Data/COVID19BE.xlsx'
 
-'''if os.path.isfile(ROOT+FILE) :
+if os.path.isfile(ROOT+FILE) :
     print("UDPDATING DATA ...")
     print('Removing file : ' + FILE)
     os.remove(ROOT+FILE)
@@ -18,7 +18,7 @@ URL= 'https://epistat.sciensano.be/Data/COVID19BE.xlsx'
 else :
     print("Downloading file : " + FILE)
     wget.download(URL, ROOT)
-    print("\nDownload Completed Successfully !")'''
+    print("\nDownload Completed Successfully !")
 
 # Opening COVID19 dataset in xlsx format
 # Select sheet DEATH
@@ -39,6 +39,14 @@ for i in range(2, max_row+1):
 
 dtype = [('agegroup', 'U5'), ('gender', 'U1'), ('cases', int)]
 dataset = np.asarray(data, dtype=dtype)
+sd = np.std(dataset['cases'])
+mean = np.mean(dataset['cases'])
+
+# for i in range(len(dataset)):
+#     if dataset[i]['cases'] > 1 :
+#         test = np.repeat(dataset[i], dataset[i]['cases'])
+        
+# print(test)
 
 def ageSort(dataset, sex):
     dt = []
@@ -53,6 +61,8 @@ def ageSort(dataset, sex):
 def plot():
     men_dataset = ageSort(dataset, 'M')
     women_dataset = ageSort(dataset, 'F')
+    sd = np.std(dataset['cases'])
+    mean = np.mean(dataset['cases'])
 
     fig, ax = plt.subplots()
     men = ax.bar(AGERANGE, men_dataset['cases'],  align='center', label='Men', picker=True)
@@ -65,31 +75,19 @@ def plot():
     ax.grid()
     ax.legend()
     
-    
-    cid = fig.canvas.mpl_connect('pick_event', onpick1)
+    cid = fig.canvas.mpl_connect('pick_event', onpick)
     plt.show()
 
 def onpick(event):
     rect = event.artist
-    print("rect : ", rect)
     handles,labels = rect.axes.get_legend_handles_labels()
-    print("handles and labels : ", handles, " and ", labels)
     # Search for current artist within all plot groups
     label = [label for h,label in zip(handles, labels) if rect in h.get_children()]
-    print(label)
     if len(label) == 1:
         label = label[0]
-        plt.text(50, 50, label[0])
     else:
         label = None
     print (label)
 
-
-def onpick1(event):   
-    if isinstance(event.artist, Rectangle):
-        patch = event.artist
-        path = patch.get_path()
-        print('onpick1 patch:', path)
-        
         
 plot()

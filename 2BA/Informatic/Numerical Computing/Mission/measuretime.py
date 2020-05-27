@@ -1,5 +1,8 @@
-# Author: Mitrovic Nikola
-# Version: April 23, 2020
+'''
+Mission 3: Numpy Efficiency
+Author: Mitrovic Nikola
+Version: April 23, 2020
+'''
 
 import timeit, sys
 import numpy as np  
@@ -93,20 +96,24 @@ def plot(t1, t2):
 
     # Set up plot settings (axe, label, subplot, legend ...)
     fig, axs = plt.subplots(2)
-    axs[0].set_title('Matrix Product Processing Time Comparison', fontweight='bold')
+    axs[0].set_title('Matrix Product Processing Time', fontweight='bold')
     axs[0].set_xlabel('Matrix Dimension', fontsize='12')
     axs[0].set_ylabel('Time [ms]', fontsize='12')
     axs[0].grid()
-    axs[1].set_title('Minimum Value Processing Time Comparison', fontweight='bold')
+
+    axs[1].set_title('Minimum Value Processing Time', fontweight='bold')
     axs[1].set_xlabel('Python List/1D Array Size', fontsize='12')
     axs[1].set_ylabel('Time [ms]', fontsize='12')
     axs[1].grid()
+
     axs[0].plot(dataset1[:, 0], dataset1[:, 1], 'r')
     axs[0].plot(dataset2[:, 0], dataset2[:, 1], 'b')
     axs[0].legend(['Python List Method', 'Numpy Array Method'])
+
     axs[1].plot(dataset3[:, 0], dataset3[:, 1], 'r')
     axs[1].plot(dataset4[:, 0], dataset4[:, 1], 'b')
     axs[1].legend(['Python List Method', 'Numpy Array Method'])
+
     fig.tight_layout(pad=2.0)
     plt.show()
 

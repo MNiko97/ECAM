@@ -1,5 +1,8 @@
-# Author: Mitrovic Nikola
-# Version: May 27, 2020
+'''
+Mission 1: Simple Helloworld Script
+Author: Mitrovic Nikola
+Version: May 27, 2020
+'''
 
 import numpy as np
 import matplotlib.pyplot as plt
