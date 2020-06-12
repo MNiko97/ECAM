@@ -71,15 +71,11 @@ def check_path():
     pattern = re.finditer(r'^[A-Z]{1}(:\\){1}', path)
     if pattern :
         print("True")
-    elif 
-    else :
-        print("ERROR")
     
-
 def search_number():
     pass
 
 def url_cut():
     pass
 
-check_path()
+check_phone()
