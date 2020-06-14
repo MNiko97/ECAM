@@ -3,10 +3,20 @@
 # Exercice 1.1 Programmation fonctionnelle :
 from functools import reduce
 def reduce(fn, L, init):
-    print(fn)
+    acc = init
+    for elem in L:
+        fc = fn
+        acc = fc(elem, acc)
+    return acc
     
 def limitMax(maximum):
-    return maximum
+    def limit(elem, acc):
+        if elem <= maximum:
+            acc.append(elem)
+        else:
+            acc.append(maximum)
+        return acc
+    return limit
 
 print(reduce(limitMax(3), [1, 2, 3, 4, 5, 6], []))
 
@@ -45,15 +55,20 @@ add(1, 2)
 add("secret", 1, 2)'''
 
 # Exercice 1.4 Arbres :
+import copy 
 class Tree:
-    def __init__(self, value, left=None, right=None):
+    def __init__(self, value, left=None, right=None, children=()):
         self.value = value
         self.left = left
         self.right = right
-
-    def getValue(self):
-        return self.value
     
+    @property
+    def value(self):
+        return self.value
+
+    @property
+    return copy.deepcopy(self.__children)
+
 def treeMax(tree):
     for branch in tree :
         print(branch)
@@ -61,4 +76,4 @@ def treeMax(tree):
 t = Tree(0, Tree(4, Tree(-5), Tree(3, Tree(8), Tree(1))), Tree(2, Tree(4)))
 a = Tree(4)
 
-print(a.getValue)
+print(len(a))
