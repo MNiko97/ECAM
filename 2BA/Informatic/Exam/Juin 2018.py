@@ -61,13 +61,12 @@ class Tree:
         self.value = value
         self.left = left
         self.right = right
+        self.__children = children
     
     @property
     def value(self):
         return self.value
 
-    @property
-    return copy.deepcopy(self.__children)
 
 def treeMax(tree):
     for branch in tree :
@@ -75,5 +74,3 @@ def treeMax(tree):
 
 t = Tree(0, Tree(4, Tree(-5), Tree(3, Tree(8), Tree(1))), Tree(2, Tree(4)))
 a = Tree(4)
-
-print(len(a))
