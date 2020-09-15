@@ -11,15 +11,15 @@ class WebApp():
 
     @cherrypy.expose
     def index(self):
-        return serve_file(os.path.join(ROOT, 'index.htm'))
+        return serve_file(os.path.join('C:\\Users\\Niko\\OneDrive - ECAM\\ECAM\\BA2\\Q2\\GitHub\\ECAM\\2BA\\Informatic\\TP\\TP 4 Network\\index.htm'))
 
     @cherrypy.expose
     def default(self, attr='abc'):
-        return serve_file(os.path.join(ROOT, 'error.htm'))
+        return serve_file(os.path.join('C:\\Users\\Niko\\OneDrive - ECAM\\ECAM\\BA2\\Q2\\GitHub\\ECAM\\2BA\\Informatic\\TP\\TP 4 Network\\errorr.htm'))
 
     @cherrypy.expose
     def signUp(self):
-        return serve_file(os.path.join(ROOT, 'signup.html'))
+        return serve_file(os.path.join('C:\\Users\\Niko\\OneDrive - ECAM\\ECAM\\BA2\\Q2\\GitHub\\ECAM\\2BA\\Informatic\\TP\\TP 4 Network\\signup.html'))
     
     @cherrypy.expose
     def signIn(self, name):
@@ -39,4 +39,4 @@ class WebApp():
     def listusers(self):
         return serve_file(os.path.join(ROOT, 'listusers.htm'))
 
-cherrypy.quickstart(WebApp(), '', ROOT + '/AdvancedPython2BA-Labo4/server.conf')
+cherrypy.quickstart(WebApp(), '', ROOT + '\\2BA\\Informatic\\TP\\TP 4 Network\\server.conf')
