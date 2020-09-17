@@ -1,6 +1,6 @@
-Culture générale :
+1. Culture générale :
 
-1) Nombre binaire :
+1.1 Nombre binaire :
 
 on utilise la méthode du complément à 2 pour changer le signe d'un nombre en binaire
 pour l'addition des bits :
@@ -12,7 +12,67 @@ pour l'addition des bits :
 
 donc 1001 + 0011 = 1100
 
-2) Nombre en hexadécimal :
+1.2 Nombre en hexadécimal :
 
 en base 16, on peut utiliser des nombres allant de 0 à 15 
-où 10, 11, 12, 13, 14, 15 sont représenté par A, B, C, D, E, F
+où 10, 11, 12, 13, 14, 15 sont représenté respectivement par A, B, C, D, E, F.
+
+1.3 Nouvelles notation scientifique ; 
+ 0,602 x 10^22 donc le nombre commence toujours par 0.
+ Il faut donc 3 informations pour coder le nombre en binaire : Le signe, la mantisse (le nombre de décimales que l'on peut avoir) et l'exposant.
+si le nombre est négative le premier bit vaudra 1, si positif 0.
+
+double = 8 octets = 64 bits.
+
+1.4 Représentation des caractères :
+On utilise des tables comme par exemple la table ASCII ou on code un caractère sur 8 bits.utilisé, 
+ou ANSI sur 2 octets ou encore UTF (le plus utilisé car mieux optimisé pour la place et le nombre de caractères possibles) entre 1 et 4 octets.
+
+
+2. Les fichiers :
+
+Un fichier c'est simplement une suite d'octets.
+
+2.1 Fichier séquentiel :
+ informations par bloc de longueur variable séparé par un indicateur de fin de bloc
+
+ CR = Cariage return 
+ LF = LineFeed
+
+EX : 
+ Bonjour 
+ comment ça va 
+ Bien ?
+
+ Moi
+ 
+ = b o n j o u r CR LF C o m m e n t  c a  v a CR LG B i e n  ? CR LF CR LF M o i FE (38 octets)
+
+ On utilise cette méthode dans les fichiers de type txt, HTML, CSS, C, py etc.
+
+ Si on veut modifier un fichier on doit le mettre dans la mémoire RAM, 
+ puis modifier les données et ensuite réécrire les données sur le disque dur.
+
+ 3 Modes de lecture possibles : 
+
+ Lecture : on lit séquentiellement 
+ Création-écrasement : si le fichier n'existe pas il est crée sinon son contenu est effacé. On peut ensuite écrire dedans.
+ Ecriture à la fin : le fichier n'est pas effacé on peut ensuite écrire à la fin du fichier.
+
+ 2.2 Fichiers à accès direct : 
+ le programme qui lit le fichier doit connaitre la taille d'un bloc 
+ et donc parfois la taille d'un bloc est plus grand que la taille de son contenu.
+ Et donc l'exemple plus haut prendrait 150 octets au lieu de 38.
+ 
+ On utilise ce genre d'organisation avec l'utilisation de variable de type STRUCT càd de variables composées :
+ int, char(30), longInt, char(50) etc. 
+
+ Prends forcément plus de place mais permet plus de chose. Utilisation d'un pointeur pour aller chercher le bloc dans la mémoire. 
+
+2 Modes de lecture possibles : 
+ Lecture-Ecriture : on peut lire et écrire là ou l'on déplace le pointeur au bon endroit. 
+ Création-écrasement
+
+ Application : les index, recherche dichotomique (données triées) plus efficace que la recherche séquentiel.
+
+ Méthode de recherche encore plus efficace, table de Hashing (plus gourmant).
