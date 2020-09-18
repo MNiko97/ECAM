@@ -17,7 +17,7 @@ donc 1001 + 0011 = 1100
 en base 16, on peut utiliser des nombres allant de 0 à 15 
 où 10, 11, 12, 13, 14, 15 sont représenté respectivement par A, B, C, D, E, F.
 
-1.3 Nouvelles notation scientifique ; 
+1.3 Nouvelles notation scientifique :
  0,602 x 10^22 donc le nombre commence toujours par 0.
  Il faut donc 3 informations pour coder le nombre en binaire : Le signe, la mantisse (le nombre de décimales que l'on peut avoir) et l'exposant.
 si le nombre est négative le premier bit vaudra 1, si positif 0.
