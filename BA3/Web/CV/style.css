@@ -1,0 +1,23 @@
+.JobTitle, h2
+{
+    color: darkblue;
+    border: 1px white solid;
+    box-shadow: 3px 3px 3px gray;
+}
+
+p, h2
+{
+    font-size: 1.5em;
+    text-align: justify;
+}
+.pp
+{
+    float: left;
+}
+body{
+    background-image: url("src/cvBackground.jpg");
+    background-repeat: no-repeat;
+}
+.date{
+    font-size: 1.1em;
+}
