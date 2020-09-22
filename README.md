@@ -1,7 +1,3 @@
-## ECAM Computer Science Project
+## ECAM Computer Science Projects
 
-Here are all the project for the 2nd Bachelor at ECAM for the following courses :
-
-Informatic and Numerical Computing PI2C
-
-Numerical Electronic EN2C
+Here are all the project for the Bachelor at ECAM
