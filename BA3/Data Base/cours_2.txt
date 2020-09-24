@@ -1,0 +1,6 @@
+Base SQL :
+
+"primary key(variable)" est un variable unique. Ex : numéro de client unique
+où variable est une chaine de caractère par exemple. Cela implique si l'on ajoute 
+une nouvelle variable identique celle défini comme "primaire", la base donnée 
+va rejeter. Typiquement pour ne pas avoir deux fiches client identiques.
