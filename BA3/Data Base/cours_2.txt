@@ -4,3 +4,36 @@ Base SQL :
 où variable est une chaine de caractère par exemple. Cela implique si l'on ajoute 
 une nouvelle variable identique celle défini comme "primaire", la base donnée 
 va rejeter. Typiquement pour ne pas avoir deux fiches client identiques.
+
+1. Creation de Table :
+create : crée une table
+drop : supprime une table
+alter table "TABLE" add "Donnée" : permet de rajouter une donnée dans la table TABLE 
+(ex: on rajoute les frais d'expedition lors de commande).
+
+On peut rajouter des primary key, enlever des données à une table :
+alter table "TABLE" add primary key ("NOM de la variable")
+alter table "TABLE" drop "Donnée
+
+2. Creation d'index :
+create index INDEX : crée un index nomé INDEX
+create unique index INDEX : unique permet d'assurer qu'il n y a pas de doublons dans l'index INDEX. 
+drop index INDEX: supprime l'index nomé INDEX.
+
+Index sert à faire des recherche dans la base de donnée plus efficacement et rapidement. 
+
+3. Lecture et extraction des données :
+EX 1:
+select NCLI, NOM from CLIENT where LOCALITE = "Bruxelles" : 
+permet de sortir les numéro et nom de la table CLIENT ou la localisation est Bruxelles
+
+EX 2:
+select 'TVA de ', NPRO, ' = ', 0.21*PRIX*QSTOCK from PRODUIT where QSTOCK > 500 :
+on peut aussi selectionner des string !
+
+4. Insertion de donnée :
+insert into CLIENT values (NOM, PRENOM, AGE) : rajoute à la table CLIENT.
+
+5. Oronnder :
+group by NAME : groupes le résultat par les noms
+having count(*) : ayant au moin 2 ou plus 
