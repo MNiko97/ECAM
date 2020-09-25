@@ -1,0 +1,13 @@
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\Labo_1\bin\Debug\netcoreapp3.1\Labo_1.exe
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\Labo_1\bin\Debug\netcoreapp3.1\Labo_1.deps.json
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\Labo_1\bin\Debug\netcoreapp3.1\Labo_1.runtimeconfig.json
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\Labo_1\bin\Debug\netcoreapp3.1\Labo_1.runtimeconfig.dev.json
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\Labo_1\bin\Debug\netcoreapp3.1\Labo_1.dll
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\Labo_1\bin\Debug\netcoreapp3.1\Labo_1.pdb
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\Labo_1\obj\Debug\netcoreapp3.1\Labo_1.csprojAssemblyReference.cache
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\Labo_1\obj\Debug\netcoreapp3.1\Labo_1.AssemblyInfoInputs.cache
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\Labo_1\obj\Debug\netcoreapp3.1\Labo_1.AssemblyInfo.cs
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\Labo_1\obj\Debug\netcoreapp3.1\Labo_1.csproj.CoreCompileInputs.cache
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\Labo_1\obj\Debug\netcoreapp3.1\Labo_1.dll
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\Labo_1\obj\Debug\netcoreapp3.1\Labo_1.pdb
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\Labo_1\obj\Debug\netcoreapp3.1\Labo_1.genruntimeconfig.cache
