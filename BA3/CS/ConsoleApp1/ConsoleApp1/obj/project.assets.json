@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Niko\\OneDrive - ECAM\\ECAM\\GitHub\\ECAM\\BA3\\CS\\Labo_1\\Labo_1.csproj",
-      "projectName": "Labo_1",
-      "projectPath": "C:\\Users\\Niko\\OneDrive - ECAM\\ECAM\\GitHub\\ECAM\\BA3\\CS\\Labo_1\\Labo_1.csproj",
+      "projectUniqueName": "C:\\Users\\Niko\\OneDrive - ECAM\\ECAM\\GitHub\\ECAM\\BA3\\CS\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
+      "projectName": "ConsoleApp1",
+      "projectPath": "C:\\Users\\Niko\\OneDrive - ECAM\\ECAM\\GitHub\\ECAM\\BA3\\CS\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
       "packagesPath": "C:\\Users\\Niko\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Niko\\OneDrive - ECAM\\ECAM\\GitHub\\ECAM\\BA3\\CS\\Labo_1\\obj\\",
+      "outputPath": "C:\\Users\\Niko\\OneDrive - ECAM\\ECAM\\GitHub\\ECAM\\BA3\\CS\\ConsoleApp1\\ConsoleApp1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Niko\\AppData\\Roaming\\NuGet\\NuGet.Config",
