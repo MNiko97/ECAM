@@ -10,3 +10,4 @@ C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\ConsoleApp1\ConsoleApp1\ob
 C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\ConsoleApp1\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.dll
 C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\ConsoleApp1\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.pdb
 C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\ConsoleApp1\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.genruntimeconfig.cache
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\ConsoleApp1\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.csprojAssemblyReference.cache
