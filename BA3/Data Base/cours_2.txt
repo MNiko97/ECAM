@@ -36,4 +36,4 @@ insert into CLIENT values (NOM, PRENOM, AGE) : rajoute à la table CLIENT.
 
 5. Oronnder :
 group by NAME : groupes le résultat par les noms
-having count(*) : ayant au moin 2 ou plus 
+having count(*) : ayant au moin 2 ou plus.
