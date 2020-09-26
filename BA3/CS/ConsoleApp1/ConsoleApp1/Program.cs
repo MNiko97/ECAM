@@ -18,7 +18,7 @@ namespace ConsoleApp1
             while (i < a.Length)
             {
                 Console.WriteLine(a[i]);
-                res += a[i]*Math.Pow(2, degree)
+                res += a[i]*Math.Pow(2, degree);
                 i++;
             }
         }
