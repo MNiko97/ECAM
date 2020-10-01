@@ -1,4 +1,4 @@
-Create a C# project :
+Create and Run a C# Project :
 
 1. Go to your CS folder :
 cd BA3/CS
