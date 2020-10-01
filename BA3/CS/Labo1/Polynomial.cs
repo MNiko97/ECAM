@@ -19,8 +19,7 @@ class Polynomial
         public override string ToString()
         {
             return base.ToString();
-        }
-        
+        } 
         public static void TrinomialRoot(double a, double b, double c)
         {
             double delta = Math.Pow(b, 2) - 4 * a * c;
