@@ -6,14 +6,21 @@
         <title>Contact Manager Home</title>
     </head>
     <body>
-        <h1>Contact Manager</h1>
-        <form id="form-user" action="#" method="post">
-            <div class="form-box error" data-errormsg="">
-                <label for="input-option">Option</label>
-                <input type="text" id="input-option" autofocus placeholder="Option" tabindex="1"/>
-            </div>        
+        <h1 id="main-title">Contact Manager</h1>
+        <form id="form-user">
+            <div class="form-box" data-errormsg="">
+                <label id="option-info" for="input-option">Option</label>
+                <input type="text" id="input-option" placeholder="Option" required/>
+            </div>       
+            <div class="form-box" data-errormsg="">
+                <label for="input-firstname">First name</label>
+                <input type="text" id="input-firstname" placeholder="First name" disabled required/>
+            </div>
+            <div class="form-box" data-errormsg="">
+                <label for="input-name">Name</label>
+                <input type="text" id="input-name" placeholder="Name" disabled required/>
+            </div>
             <div class="form-box">
-                <button id="button-cancel">Cancel</button>
                 <button id="button-submit">Submit</button>
             </div>
         </form>

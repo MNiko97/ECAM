@@ -32,19 +32,6 @@ form{
     width: 300px;
     padding: 0.25rem 1rem;
 }
-.form-box select{
-    font-size: 1rem;
-    width: 300px;
-    padding: 0.25rem 1rem;
-}
-.form-box option{
-    font-size: 1rem;
-    width: 300px;
-    padding: 0.25rem 1rem;
-}
-.form-box input[type="checkbox"]{
-    font-size: 1rem;
-}
 .form-box button{
     font-size: 1rem;
     border: none;
@@ -53,16 +40,4 @@ form{
     color: white;
     background-color: cornflowerblue;
     cursor: pointer;
-}
-
-.error::after{
-    background-color: hsl(10, 60%, 50%);
-    color: papayawhip;
-    font-size: 1rem;
-    line-height: 1.8;
-    width: 350px;
-    padding-left: 1rem;
-    position:absolute;
-    right: 0;
-    content: attr(data-errormsg);
 }
