@@ -15,9 +15,9 @@ class ContactList{
             console.log("You have no contacts registered")
         }
         else{
-            console.log("Here are all your contacts :")
+            console.log("Here are all your contacts:")
             for (let i = 0; i < this.numberOfContacts; i++){
-                console.log(this.contactList[i].showInfo());
+                this.contactList[i].showInfo();
             }
         }
     }
@@ -25,6 +25,12 @@ class ContactList{
         let newContact = new Contact(firstname, name);
         this.contactList.push(newContact);
         this.numberOfContacts += 1;
+    }
+    showList(){
+        console.log(this.contactList);
+        for (let i = 0; i < this.numberOfContacts; i++){
+            console.log(this.contactList[i]);
+        }
     }
 }
 
@@ -44,31 +50,26 @@ function showMenu(){
     console.log("0 : Quit");
 }
 
-function input(){
-    document.getElementById("validateButton").addEventListener("click", onClick);
-}
-
-function onClick(){
-    console.log("you clicked");
-}
-
 function main(){
     let myContactList = new ContactList;
     myContactList.addNewContact("Carole", "Lévisse");
     myContactList.addNewContact("Mélodie", "Nelsonne");
     console.log("Welcome !")
-
     while(running){
         showMenu();
-        let input = document.getElementById("textInput").value;
+        const input = prompt();
         switch (input){
             case "1":
                 myContactList.showAllContacts();
                 break;
             case "2":
-                let name = document.getElementById("textInput").value;
-                let surname = document.getElementById("textInput").value;
-                myContactList.addNewContact([name, surname]);
+                console.log("New contact: ");
+                console.log("Write name: ");
+                const name = prompt();
+                console.log("Write Firstname : ");
+                const firstname = prompt();
+                myContactList.addNewContact([name, firstname]);
+                console.log("Contact sucessfully added!")
                 myContactList.showAllContacts();
                 break;
             case "0":
@@ -78,9 +79,3 @@ function main(){
     }
 }
 
-showMenu();
-let myContactList = new ContactList;
-myContactList.addNewContact("Carole", "Lévisse");
-myContactList.addNewContact("Mélodie", "Nelsonne");
-console.log(myContactList[0]);
-myContactList.showAllContacts;
