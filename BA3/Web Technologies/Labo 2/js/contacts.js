@@ -27,12 +27,6 @@ class ContactList{
         this.contactList.push(newContact);
         this.numberOfContacts += 1;
     }
-    showList(){
-        console.log(this.contactList);
-        for (let i = 0; i < this.numberOfContacts; i++){
-            console.log(this.contactList[i]);
-        }
-    }
 }
 class Contact{
     constructor(firstname, name){
