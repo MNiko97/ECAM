@@ -11,3 +11,16 @@ C:\Users\Niko\OneDrive - ECAM\Asus Laptop\Documents\GitHub\ECAM\BA3\CS\CountDown
 C:\Users\Niko\OneDrive - ECAM\Asus Laptop\Documents\GitHub\ECAM\BA3\CS\CountDown\obj\Debug\netcoreapp3.1\CountDown.dll
 C:\Users\Niko\OneDrive - ECAM\Asus Laptop\Documents\GitHub\ECAM\BA3\CS\CountDown\obj\Debug\netcoreapp3.1\CountDown.pdb
 C:\Users\Niko\OneDrive - ECAM\Asus Laptop\Documents\GitHub\ECAM\BA3\CS\CountDown\obj\Debug\netcoreapp3.1\CountDown.genruntimeconfig.cache
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\CountDown\bin\Debug\netcoreapp3.1\CountDown.exe
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\CountDown\bin\Debug\netcoreapp3.1\CountDown.deps.json
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\CountDown\bin\Debug\netcoreapp3.1\CountDown.runtimeconfig.json
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\CountDown\bin\Debug\netcoreapp3.1\CountDown.runtimeconfig.dev.json
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\CountDown\bin\Debug\netcoreapp3.1\CountDown.dll
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\CountDown\bin\Debug\netcoreapp3.1\CountDown.pdb
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\CountDown\obj\Debug\netcoreapp3.1\CountDown.csprojAssemblyReference.cache
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\CountDown\obj\Debug\netcoreapp3.1\CountDown.AssemblyInfoInputs.cache
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\CountDown\obj\Debug\netcoreapp3.1\CountDown.AssemblyInfo.cs
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\CountDown\obj\Debug\netcoreapp3.1\CountDown.csproj.CoreCompileInputs.cache
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\CountDown\obj\Debug\netcoreapp3.1\CountDown.dll
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\CountDown\obj\Debug\netcoreapp3.1\CountDown.pdb
+C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\CountDown\obj\Debug\netcoreapp3.1\CountDown.genruntimeconfig.cache
