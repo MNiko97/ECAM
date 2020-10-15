@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Niko\\OneDrive - ECAM\\ECAM\\GitHub\\ECAM\\BA3\\CS\\test\\test.csproj",
-      "projectName": "test",
-      "projectPath": "C:\\Users\\Niko\\OneDrive - ECAM\\ECAM\\GitHub\\ECAM\\BA3\\CS\\test\\test.csproj",
+      "projectUniqueName": "C:\\Users\\Niko\\OneDrive - ECAM\\ECAM\\GitHub\\ECAM\\BA3\\CS\\Labo2\\EvalManager\\EvalManager.csproj",
+      "projectName": "EvalManager",
+      "projectPath": "C:\\Users\\Niko\\OneDrive - ECAM\\ECAM\\GitHub\\ECAM\\BA3\\CS\\Labo2\\EvalManager\\EvalManager.csproj",
       "packagesPath": "C:\\Users\\Niko\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Niko\\OneDrive - ECAM\\ECAM\\GitHub\\ECAM\\BA3\\CS\\test\\obj\\",
+      "outputPath": "C:\\Users\\Niko\\OneDrive - ECAM\\ECAM\\GitHub\\ECAM\\BA3\\CS\\Labo2\\EvalManager\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Niko\\AppData\\Roaming\\NuGet\\NuGet.Config"
