@@ -1,0 +1,44 @@
+Gestion des tampons :
+= Mémoire cache qui permet de stocker temporairement des données très rapidement accessible (un peu comme la RAM). Mais si plus d'alimentation, 
+la mémoire est effacée.
+
+En cas de problèmes :
+Sauvegarde (backup) gérée par la base de données. On peut décider de faire des backup incrémentaux journalier
+plus rapide (qui reprends uniquement les dernières modification de données) et tout les x temps faire un backup complet (beaucoup plus long).
+Journal (log) permetd'avoir l'historique de toute les opérations. Il ne fait que des écritures séquentielles.
+
+En cas de crash léger : on peut se contenter du journal pou réappliquer les dernières opérations.
+Le backup servent pour des crash plus important. 
+
+Checkpoint = le moment ou l'on est sur que les données sur le disque était correcte. 
+
+Technologe RAID :
+permet de faire de la redondance et d'étendre les données sur plusieurs disque (ça les rends aussi plus rapide
+en écritures et lectures) par contre on perds de la mémoire. Ex RAID1, 2 disque de 2TB, mémoire totale 2TB
+
+Régulation de la concurrence :
+
+On parle de mise à jour perdue lorsque deux programme tente de modifier une valeur dans la mémoire. C'est le 
+dernier à avoir mis à jour la valeur qui l'emporte.
+
+Accès à des données instables = modifier une valeur et puis annuler la modification pendant qu'un autre programme
+ait effectuer une opération lors de l'annulation (qui ne prends donc pas en compte l'annulation).
+
+Techniques de verrouillage :
+On utilise des verrous (lock) pour empecher ces problèmes de mise à jour perdue ou données instables.
+
+verrou partagé : personne d'autre ne peut modifier la valeur.
+verrou exclusif : personne d'autre ne peut ni lire ou modifier la valeur.
+
+et donc si un autre programme essaye d'acceder à une valeur verrou exclusif il sera simplement mis en pause.
+et dès que c'est unlock, ce programme reprends. Mais c'est la base de données qui se charge de ce procéd de mise
+en pause et verrouillage et déverrouillage.
+
+deadlock = ??
+
+rollback : si on annule une modification fait par un proccessus, ça va libérer les verrou et donc perdre les modifications
+et le proccessus peut reprendre à nouveau.
+
+
+
+
