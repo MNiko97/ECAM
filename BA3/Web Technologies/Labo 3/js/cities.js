@@ -15,7 +15,8 @@ const validate = function(event){
         return true;
     }
     else{
-        var errorMessage = "<li>Invalid Zip Code! Try number between 1000 and 9999</li>";
+        $("ul#error-message").empty();
+        var errorMessage = "<li>Invalid Zip Code Input! Try number between 1000 and 9992</li>";
         $("ul#error-message").append(errorMessage);
         return false;
     }
@@ -26,16 +27,27 @@ function search(input){
     dataRequest.open('GET', dataURL);
     dataRequest.onload = function(){
         var data = JSON.parse(dataRequest.responseText);
+        var count = 0;
         data.forEach(element => {
             if (input == element.zip){
+                count ++;
                 let match = element.city;
                 addToList(match);
             } 
         });
+        if (count == 0){
+            $("ul#error-message").empty();
+            var errorMessage = "<li>0 city found</li>";
+            $("ul#error-message").append(errorMessage);
+        }
+        else{
+            $("ul#error-message").empty();
+            var errorMessage = "<li>" + count + " city(ies) found(s)</li>";
+            $("ul#error-message").append(errorMessage);
+        }
     };
     dataRequest.send(); 
 }
-
 function addToList(city){
     var newCity = '<li>' + city + '</li>';
     $("ul#cities").append(newCity);
