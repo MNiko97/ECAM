@@ -2,10 +2,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cities Finder</title>
 </head>
 <body>
+    <h1>Cities and Zip Code Finder</h1>
+    <div class="message">
+        <h2>Message :</h2>
+        <ul id="error-message"></ul>
+    </div>
+    <div class="result">
+        <h2>Result : </h2>
+        <ul>
+            <li id="zipcode"></li>
+            <ul id="cities"></ul> 
+        </ul>
+    </div>
+    <form id="form-user">
+        <div class="form-box" data-errormsg="">
+            <label for="input-zipcode">Zip Code :</label>
+            <input type="text" id="input-zipcode" placeholder="Zip Code" required/>
+            <button id="button-submit">Search</button>
+        </div>
+    </form>
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-    
+    <script src="js/cities.js"></script>
 </body>
 </html>
