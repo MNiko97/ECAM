@@ -29,6 +29,7 @@ function loadJSON(input) {
         if (this.readyState == 4 && this.status == 200) { 
             //readyState 4: request finished and response is ready
             //status 200: OK
+            //https://www.w3schools.com/js/js_ajax_http_response.asp
             var statusMessage = "<li>Ready</li>";
             $("ul#error-message").empty();
             $("ul#error-message").append(statusMessage);
