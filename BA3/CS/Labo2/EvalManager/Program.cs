@@ -62,7 +62,7 @@ namespace EvalManager
     class Evaluation{
         public Activity Activity;
         public Evaluation(Activity Activity){
-            this.Activity = this.Activity;
+            this.Activity = Activity;
         }
         public virtual int Note(){
             return 0;
