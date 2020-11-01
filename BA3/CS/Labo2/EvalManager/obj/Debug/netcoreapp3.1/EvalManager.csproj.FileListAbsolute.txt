@@ -11,3 +11,16 @@ C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\Labo2\EvalManager\obj\Debu
 C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\Labo2\EvalManager\obj\Debug\netcoreapp3.1\EvalManager.dll
 C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\Labo2\EvalManager\obj\Debug\netcoreapp3.1\EvalManager.pdb
 C:\Users\Niko\OneDrive - ECAM\ECAM\GitHub\ECAM\BA3\CS\Labo2\EvalManager\obj\Debug\netcoreapp3.1\EvalManager.genruntimeconfig.cache
+C:\Users\Niko\OneDrive - ECAM\Asus Laptop\Documents\GitHub\ECAM\BA3\CS\Labo2\EvalManager\bin\Debug\netcoreapp3.1\EvalManager.exe
+C:\Users\Niko\OneDrive - ECAM\Asus Laptop\Documents\GitHub\ECAM\BA3\CS\Labo2\EvalManager\bin\Debug\netcoreapp3.1\EvalManager.deps.json
+C:\Users\Niko\OneDrive - ECAM\Asus Laptop\Documents\GitHub\ECAM\BA3\CS\Labo2\EvalManager\bin\Debug\netcoreapp3.1\EvalManager.runtimeconfig.json
+C:\Users\Niko\OneDrive - ECAM\Asus Laptop\Documents\GitHub\ECAM\BA3\CS\Labo2\EvalManager\bin\Debug\netcoreapp3.1\EvalManager.runtimeconfig.dev.json
+C:\Users\Niko\OneDrive - ECAM\Asus Laptop\Documents\GitHub\ECAM\BA3\CS\Labo2\EvalManager\bin\Debug\netcoreapp3.1\EvalManager.dll
+C:\Users\Niko\OneDrive - ECAM\Asus Laptop\Documents\GitHub\ECAM\BA3\CS\Labo2\EvalManager\bin\Debug\netcoreapp3.1\EvalManager.pdb
+C:\Users\Niko\OneDrive - ECAM\Asus Laptop\Documents\GitHub\ECAM\BA3\CS\Labo2\EvalManager\obj\Debug\netcoreapp3.1\EvalManager.csprojAssemblyReference.cache
+C:\Users\Niko\OneDrive - ECAM\Asus Laptop\Documents\GitHub\ECAM\BA3\CS\Labo2\EvalManager\obj\Debug\netcoreapp3.1\EvalManager.AssemblyInfoInputs.cache
+C:\Users\Niko\OneDrive - ECAM\Asus Laptop\Documents\GitHub\ECAM\BA3\CS\Labo2\EvalManager\obj\Debug\netcoreapp3.1\EvalManager.AssemblyInfo.cs
+C:\Users\Niko\OneDrive - ECAM\Asus Laptop\Documents\GitHub\ECAM\BA3\CS\Labo2\EvalManager\obj\Debug\netcoreapp3.1\EvalManager.csproj.CoreCompileInputs.cache
+C:\Users\Niko\OneDrive - ECAM\Asus Laptop\Documents\GitHub\ECAM\BA3\CS\Labo2\EvalManager\obj\Debug\netcoreapp3.1\EvalManager.dll
+C:\Users\Niko\OneDrive - ECAM\Asus Laptop\Documents\GitHub\ECAM\BA3\CS\Labo2\EvalManager\obj\Debug\netcoreapp3.1\EvalManager.pdb
+C:\Users\Niko\OneDrive - ECAM\Asus Laptop\Documents\GitHub\ECAM\BA3\CS\Labo2\EvalManager\obj\Debug\netcoreapp3.1\EvalManager.genruntimeconfig.cache

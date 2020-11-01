@@ -59,14 +59,12 @@ namespace EvalManager
             this.Teacher = Teacher;
         }
     }
-    class Evaluation{
+    abstract class Evaluation{
         public Activity Activity;
         public Evaluation(Activity Activity){
             this.Activity = Activity;
         }
-        public virtual int Note(){
-            return 0;
-        }
+        public abstract int Note();
     }
     class Cote : Evaluation{
         private int note;
