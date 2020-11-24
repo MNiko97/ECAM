@@ -50,12 +50,10 @@ void APP_BUFFER_Tasks(APP_BUFFER_DATA *buffer_ptr, char msgFromPC[], int msgSize
 extern APP_LED_DATA appLedData;
 extern APP_LED_DATA appLed2Data;
 
-// Initialize the task
+// Initialize the LED task
 void APP_LED_Initialize(void (*func)(void), APP_LED_DATA *led_ptr, int blinkDelay);
-
 // Evaluate Counter (Timer) State
 void APP_LED_Tasks(APP_LED_DATA *led_ptr);
-
 // Toggle LED 2 and 4 Definition
 void D2_LED(void);
 void D4_LED(void);
