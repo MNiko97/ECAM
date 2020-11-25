@@ -4,55 +4,54 @@
 APP_LED_DATA appLedData;
 APP_LED_DATA appLed2Data;
 APP_BUFFER_DATA appBufferData;
+
+// Useful variables for APP_BUFFER_Tasks
 int msgIndice = 0;
 int charToRead = 0;
 char data[100];
 
 // Function linked to Toggle method for D2 and D4
-void D2_LED(void){D2_Toggle();}
-void D4_LED(void){D4_Toggle();}
+void D2_LED(void){
+    D2_Toggle();
+}
+void D4_LED(void){
+    D4_Toggle();
+}
 
 // Initialize Buffer variables
 void APP_BUFFER_Initialize(APP_BUFFER_DATA *buffer_ptr){
     buffer_ptr->RxCount = 0;
     buffer_ptr->RxHead = 0;
     buffer_ptr->RxTail = 0;
-    buffer_ptr->isFull = 0;
 }
 void APP_BUFFER_Tasks(APP_BUFFER_DATA *buffer_ptr, char msgFromPC[], int msgSize){
-    // Update character left to read variable
-    charToRead = msgSize - msgIndice;
-    // Write message from PC to buffer until it is full
-    if (buffer_ptr->isFull == 0){
-        buffer_ptr->RxBuffer[buffer_ptr->RxHead++] = msgFromPC[msgIndice++]; 
-        if(buffer_ptr->RxHead >= sizeof(buffer_ptr->RxBuffer) && msgIndice < msgSize){
-            buffer_ptr->isFull = 1;
-            buffer_ptr->RxHead = 0; 
-        } 
-        // Check of the message from PC has been fully copied to the buffer
-        else if (msgIndice >= msgSize) buffer_ptr->isFull = 1;
+    // Update variable: character left to read 
+    charToRead = msgSize-msgIndice;
+    
+    // Do buffer task until there is no character left to read
+    if (charToRead >= 0){
+        
+        // If head is at the end of the buffer, reset head position
+        if(buffer_ptr->RxHead >= sizeof(buffer_ptr->RxBuffer)) buffer_ptr->RxHead = 0; 
+        
+        // Write message from PC to the buffer until it is full
+        if (charToRead > 0)buffer_ptr->RxBuffer[buffer_ptr->RxHead++] = msgFromPC[msgIndice++]; 
+        
+        /*
+        Start to read the buffer only when tail and head position are different
+        Tail and head should never meet until the message is entirely read.
+        When buffer is full release buffer content into a larger container : data
+        */
+        if(buffer_ptr->RxTail != buffer_ptr->RxHead){
+            data[buffer_ptr->RxCount++] = buffer_ptr->RxBuffer[buffer_ptr->RxTail];
+            
+            // Replaced character from buffer by "-" after reading it
+            buffer_ptr->RxBuffer[buffer_ptr->RxTail++] = '-';
+            
+            // If tail is at the end of the buffer, reset tail position
+            if(buffer_ptr->RxTail >= sizeof(buffer_ptr->RxBuffer))buffer_ptr->RxTail = 0;
+        }
     }
-    // When buffer is full release buffer content into a larger container named data
-    if (buffer_ptr->isFull == 1){
-        data[buffer_ptr->RxCount] = buffer_ptr->RxBuffer[buffer_ptr->RxTail];
-        // Replaced character from buffer by "-" after reading it
-        buffer_ptr->RxBuffer[buffer_ptr->RxTail] = '-';
-        buffer_ptr->RxTail ++;
-        buffer_ptr->RxCount++;
-        // Read entire buffer then reset the Tail and start to write buffer again
-        if(buffer_ptr->RxTail >= sizeof(buffer_ptr->RxBuffer)){
-            buffer_ptr->isFull = 0;
-            buffer_ptr->RxTail = 0; 
-        }   
-    }
-    // when Tail has the same position as Head, means the last buffer content has been released to data
-    // Reset Tail and Head and stop the buffer task
-    if (buffer_ptr->RxTail == buffer_ptr->RxHead && buffer_ptr->RxHead != 0){
-        buffer_ptr->RxTail = 0;
-        buffer_ptr->RxHead = 0;
-        buffer_ptr->isFull = -1;
-    }
-    NOP();
 }
 // Initialize APP_LED variables
 void APP_LED_Initialize(void (*func)(void), APP_LED_DATA *led_ptr, int blinkDelay){

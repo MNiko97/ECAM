@@ -55,7 +55,7 @@ void main(void)
     APP_BUFFER_Initialize(&appBufferData);
     //APP_LED_Initialize(&D2_LED, &appLedData, 2);
     //APP_LED_Initialize(&D4_LED, &appLed2Data, 4);
-    char msgFromPC[] = "Hello World !123";
+    char msgFromPC[] = "Hello World !";
     int msgSize = sizeof(msgFromPC);
     while (1)
     {
