@@ -4,7 +4,6 @@
  *
  * Created on November 11, 2020, 10:30 PM
  */
-
 #ifndef APP_H
 #define	APP_H
 
