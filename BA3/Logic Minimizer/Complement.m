@@ -4,7 +4,7 @@ function Mtx_comp = Complement(Mtx_in, nbrvar)
         Mtx_comp = ones(1, nbrvar)*3;
         
     % Step 2 check if there is one 'don't care' cube
-    elseif any(all(Mtx_in == 3), 2)
+    elseif any(all(Mtx_in == 3, 2))
         Mtx_comp = [];
     
     % Step 3 is the matrix contain only 1 cube, find the complement
@@ -25,6 +25,6 @@ function Mtx_comp = Complement(Mtx_in, nbrvar)
         Mtx_comp(indexOne)=2;
         Mtx_comp(indexTwo)=1;
         % Find and remove rows that contains only 3
-        Mtx_comp(find(all(Mtx_comp == 3, 1)),:) = [];
-    end       
+        Mtx_comp(find(all(Mtx_comp == 3, 2  )),:) = [];
+    end  
 end
