@@ -1,9 +1,11 @@
 #include "app.h"
 #include "mcc_generated_files/pin_manager.h"
-
+#include "mcc_generated_files/ext_int.h"
 APP_LED_DATA appLedData;
 APP_LED_DATA appLed2Data;
 APP_BUFFER_DATA appBufferData;
+APP_BTN_INT0_DATA appBtnInt0Data;
+APP_ADC_IN_DATA appAnalogInputData;
 
 // Useful variables for APP_BUFFER_Tasks
 int msgIndice = 0;
@@ -11,14 +13,13 @@ int charToRead = 0;
 char data[100];
 
 // Function linked to Toggle method for D2 and D4
-void D2_LED(void){
-    D2_Toggle();
+void D3_LED(void){
+    D3_Toggle();
 }
 void D4_LED(void){
     D4_Toggle();
 }
 
-// Initialize Buffer variables
 void APP_BUFFER_Initialize(APP_BUFFER_DATA *buffer_ptr){
     buffer_ptr->RxCount = 0;
     buffer_ptr->RxHead = 0;
@@ -53,7 +54,7 @@ void APP_BUFFER_Tasks(APP_BUFFER_DATA *buffer_ptr, char msgFromPC[], int msgSize
         }
     }
 }
-// Initialize APP_LED variables
+
 void APP_LED_Initialize(void (*func)(void), APP_LED_DATA *led_ptr, int blinkDelay){
     led_ptr->state = APP_LED_STATE_INIT;
     led_ptr->TimerCount = 0;
@@ -86,5 +87,43 @@ void APP_LED_Tasks(APP_LED_DATA *led_ptr){
         default :
             led_ptr->state = APP_LED_STATE_INIT;
             break;
+    }
+}
+
+void APP_BTN_INT0_Initialize(){
+    appBtnInt0Data.btnIsPressed = 0;
+}
+void APP_BTN_INT0_Tasks(){
+    if(appBtnInt0Data.btnIsPressed == 1){
+        EXT_INT0_InterruptDisable();
+        EXT_INT1_InterruptDisable();
+        D3_SetHigh();
+        NOP();
+        NOP();
+        D3_SetLow();
+        appBtnInt0Data.btnIsPressed = 0;
+        EXT_INT0_InterruptEnable();
+        EXT_INT1_InterruptEnable();
+    }
+}
+
+void APP_ADC_INPUT_Initialize(){
+    appAnalogInputData.readState = 0;
+    appAnalogInputData.averageInputValue = 0;
+}
+void APP_ADC_AVERAGE_INPUT_Tasks(int iteration){
+    if(appAnalogInputData.readState == 1){
+        EXT_INT1_InterruptDisable();
+        EXT_INT0_InterruptDisable();
+        adc_channel_t channel = AN0;
+        appAnalogInputData.averageInputValue = 0;
+        //float result = 0;
+        for (int i=0; i<iteration; i++){
+            appAnalogInputData.averageInputValue += ADC_GetConversion(channel);
+        }
+        appAnalogInputData.averageInputValue = appAnalogInputData.averageInputValue/iteration;
+        appAnalogInputData.readState = 0;
+        EXT_INT1_InterruptEnable();
+        EXT_INT0_InterruptEnable();
     }
 }

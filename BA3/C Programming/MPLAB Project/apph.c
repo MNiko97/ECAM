@@ -4,18 +4,17 @@
  *
  * Created on November 11, 2020, 10:30 PM
  */
+
 #ifndef APP_H
 #define	APP_H
+#include "mcc_generated_files/adc.h"
 
-// Create 3 possible states
 typedef enum
 {
     APP_LED_STATE_INIT = 0,
     APP_LED_STATE_WAIT = 1,
     APP_LED_STATE_BLINK = 2
 }APP_LED_STATE;
-
-// Allow to create a state and a timer counter
 typedef struct
 {
     APP_LED_STATE state;
@@ -24,8 +23,6 @@ typedef struct
     int blinkDelay;
     int blinkCount;  
 }APP_LED_DATA;
-
-// Create a buffer structure
 typedef struct
 {
     // 8 bit char buffer
@@ -34,25 +31,29 @@ typedef struct
     int RxHead;
     int RxTail;
 }APP_BUFFER_DATA;
+typedef struct{
+    int btnIsPressed;
+}APP_BTN_INT0_DATA;
+typedef struct{
+    int readState;
+    adc_result_t averageInputValue;
+}APP_ADC_IN_DATA;
 
-//Define Buffer
-extern APP_BUFFER_DATA appBufferData;
-
-//Initialise Buffer
-void APP_BUFFER_Initialize(APP_BUFFER_DATA *buffer_ptr);
-
-// Buffer Task
-void APP_BUFFER_Tasks(APP_BUFFER_DATA *buffer_ptr, char msgFromPC[], int msgSize);
-
-// Define 2 LEDs of APP_LED_DATA Structure 
 extern APP_LED_DATA appLedData;
 extern APP_LED_DATA appLed2Data;
+extern APP_BUFFER_DATA appBufferData;
+extern APP_BTN_INT0_DATA appBtnInt0Data;
+extern APP_ADC_IN_DATA appAnalogInputData;
 
-// Initialize the task
 void APP_LED_Initialize(void (*func)(void), APP_LED_DATA *led_ptr, int blinkDelay);
+void APP_BUFFER_Initialize(APP_BUFFER_DATA *buffer_ptr);
+void APP_BTN_INT0_Initialize();
+void APP_ADC_INPUT_Initialize();
 
-// Evaluate Counter (Timer) State
 void APP_LED_Tasks(APP_LED_DATA *led_ptr);
+void APP_BUFFER_Tasks(APP_BUFFER_DATA *buffer_ptr, char msgFromPC[], int msgSize);
+void APP_BTN_INT0_Tasks();
+void APP_ADC_AVERAGE_INPUT_Tasks(int iteration);
 
 // Toggle LED 2 and 4 Definition
 void D2_LED(void);

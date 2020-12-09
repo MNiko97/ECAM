@@ -50,18 +50,33 @@
 
 void main(void)
 {
-    // Initialize the device
     SYSTEM_Initialize();
-    APP_BUFFER_Initialize(&appBufferData);
+    //APP_BUFFER_Initialize(&appBufferData);
     //APP_LED_Initialize(&D2_LED, &appLedData, 2);
     //APP_LED_Initialize(&D4_LED, &appLed2Data, 4);
-    char msgFromPC[] = "Hello World !";
-    int msgSize = sizeof(msgFromPC);
+    //char msgFromPC[] = "Hello World !";
+    //int msgSize = sizeof(msgFromPC);
+    APP_BTN_INT0_Initialize();
+    APP_ADC_INPUT_Initialize();
+    
+    // Enable the Global Interrupts
+    INTERRUPT_GlobalInterruptEnable();
+
+    // Disable the Global Interrupts
+    //INTERRUPT_GlobalInterruptDisable();
+
+    // Enable the Peripheral Interrupts
+    INTERRUPT_PeripheralInterruptEnable();
+    // Disable the Peripheral Interrupts
+    //INTERRUPT_PeripheralInterruptDisable();
     while (1)
     {
-        APP_BUFFER_Tasks(&appBufferData, msgFromPC, msgSize);
+        //APP_BUFFER_Tasks(&appBufferData, msgFromPC, msgSize);
         //APP_LED_Tasks(&appLedData);
         //APP_LED_Tasks(&appLed2Data);
+        APP_BTN_INT0_Tasks();
+        APP_ADC_AVERAGE_INPUT_Tasks(4);
+      
     }
 }
 /**
