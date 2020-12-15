@@ -1,16 +1,21 @@
 #include "app.h"
 #include "mcc_generated_files/pin_manager.h"
 #include "mcc_generated_files/ext_int.h"
+
 APP_LED_DATA appLedData;
 APP_LED_DATA appLed2Data;
 APP_BUFFER_DATA appBufferData;
 APP_BTN_INT0_DATA appBtnInt0Data;
-APP_ADC_IN_DATA appAnalogInputData;
+APP_ADC_DATA appAdc1Data;
+APP_ADC_DATA appAdc2Data;
 
 // Useful variables for APP_BUFFER_Tasks
 int msgIndice = 0;
 int charToRead = 0;
 char data[100];
+
+// ADC Task variable for channel selection
+int ADCReady = 1;
 
 // Function linked to Toggle method for D2 and D4
 void D3_LED(void){
@@ -96,34 +101,76 @@ void APP_BTN_INT0_Initialize(){
 void APP_BTN_INT0_Tasks(){
     if(appBtnInt0Data.btnIsPressed == 1){
         EXT_INT0_InterruptDisable();
-        EXT_INT1_InterruptDisable();
         D3_SetHigh();
         NOP();
         NOP();
         D3_SetLow();
         appBtnInt0Data.btnIsPressed = 0;
         EXT_INT0_InterruptEnable();
-        EXT_INT1_InterruptEnable();
     }
 }
 
-void APP_ADC_INPUT_Initialize(){
-    appAnalogInputData.readState = 0;
-    appAnalogInputData.averageInputValue = 0;
+void APP_ADC_Initialize(APP_ADC_DATA *adc_ptr, adc_channel_t channel){
+    adc_ptr->adc_btn_int1 = 0;
+    adc_ptr->count=0;
+    adc_ptr->data = 0;
+    adc_ptr->state = APP_ADC_STATE_INIT;
+    adc_ptr->channel = channel;
 }
-void APP_ADC_AVERAGE_INPUT_Tasks(int iteration){
-    if(appAnalogInputData.readState == 1){
-        EXT_INT1_InterruptDisable();
-        EXT_INT0_InterruptDisable();
-        adc_channel_t channel = AN0;
-        appAnalogInputData.averageInputValue = 0;
-        //float result = 0;
-        for (int i=0; i<iteration; i++){
-            appAnalogInputData.averageInputValue += ADC_GetConversion(channel);
+void APP_ADC_Tasks(APP_ADC_DATA *adc_ptr){
+      
+    switch(adc_ptr->state){
+        case APP_ADC_STATE_INIT :
+        {
+            adc_ptr->state = APP_ADC_STATE_WAIT;
+            
+            break;
         }
-        appAnalogInputData.averageInputValue = appAnalogInputData.averageInputValue/iteration;
-        appAnalogInputData.readState = 0;
-        EXT_INT1_InterruptEnable();
-        EXT_INT0_InterruptEnable();
+        case APP_ADC_STATE_WAIT :
+        {
+            if(adc_ptr->adc_btn_int1){ //remove the !
+                EXT_INT1_InterruptDisable();
+                EXT_INT0_InterruptDisable();
+                if(ADCReady){
+                    ADCReady = 0;
+                    ADC_SelectChannel(adc_ptr->channel); 
+                    adc_ptr->state = APP_ADC_STATE_START;
+                }                 
+            }
+            adc_ptr->data = 0; 
+            break;
+        }
+        case APP_ADC_STATE_START :
+        {
+            if(adc_ptr->count >= 4){
+                ADCReady = 1;
+                adc_ptr->state = APP_ADC_STATE_DONE;
+                adc_ptr->data = adc_ptr->data/adc_ptr->count;
+                adc_ptr->count = 0;
+            }
+            else{
+                ADC_StartConversion();
+                adc_ptr->state = APP_ADC_STATE_IN_PROGRESS;
+            }
+            break;
+        }
+        case APP_ADC_STATE_IN_PROGRESS :
+        {
+            if(ADC_IsConversionDone()){
+                adc_ptr->state = APP_ADC_STATE_START;
+                adc_ptr->count ++;
+                adc_ptr->data += ADC_GetConversionResult();
+            }
+            break;
+        }
+        case APP_ADC_STATE_DONE :
+        {
+            ADCReady = 1;
+            adc_ptr->state = APP_ADC_STATE_WAIT;
+            adc_ptr->adc_btn_int1 = 0;
+            EXT_INT1_InterruptEnable();
+            EXT_INT0_InterruptEnable();
+            break;
+        }
     }
 }

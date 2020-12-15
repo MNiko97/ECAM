@@ -57,7 +57,8 @@ void main(void)
     //char msgFromPC[] = "Hello World !";
     //int msgSize = sizeof(msgFromPC);
     APP_BTN_INT0_Initialize();
-    APP_ADC_INPUT_Initialize();
+    APP_ADC_Initialize(&appAdc1Data, channel_AN0);
+    APP_ADC_Initialize(&appAdc2Data, channel_AN4);
     
     // Enable the Global Interrupts
     INTERRUPT_GlobalInterruptEnable();
@@ -75,7 +76,8 @@ void main(void)
         //APP_LED_Tasks(&appLedData);
         //APP_LED_Tasks(&appLed2Data);
         APP_BTN_INT0_Tasks();
-        APP_ADC_AVERAGE_INPUT_Tasks(4);
+        APP_ADC_Tasks(&appAdc1Data);
+        APP_ADC_Tasks(&appAdc2Data);
       
     }
 }

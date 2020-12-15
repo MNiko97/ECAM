@@ -83,7 +83,9 @@ void INT1_SetInterruptHandler(void (* InterruptHandler)(void)){
 void INT1_DefaultInterruptHandler(void){
     // add your INT1 interrupt custom code
     // or set custom function using INT1_SetInterruptHandler()
-    appAnalogInputData.readState = 1;
+    //ADC ptr state here
+    appAdc1Data.adc_btn_int1 = 1;
+    appAdc2Data.adc_btn_int1 = 1;
 }
 
 void EXT_INT_Initialize(void)
