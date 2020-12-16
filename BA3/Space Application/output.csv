@@ -1,0 +1,43 @@
+Superman,Mickey Mouse,James Bond,Bugs Bunny,Batman,Dorothy Gale,Darth Vader,Homer Simpson
+Neverland,Kings Landing,Basin City,Blüdhaven,Smallvile,Duckburg,Gotham City,Riverdale
+Kamar-Taj,Gotham City,District X,Metropolis,Star City,Central City,Basin City,Rajnagar
+Smallvile,District X,Gotham City,Star City,Blüdhaven,Neverland,Metropolis,District X
+Rajnagar,Riverdale,Central City,Basin City,Rajnagar,District X,Kings Landing,Central City
+Duckburg,Duckburg,District X,TheNowhere,Riverdale,Central City,Central City,Blüdhaven
+Metropolis,Riverdale,Kamar-Taj, ,District X,Riverdale,Riverdale,Rajnagar
+TheNowhere,Neverland,Neverland, ,Star City,Neverland,Basin City,Smallvile
+ ,Blüdhaven,Smallvile, ,Duckburg,Gotham City,District X,TheNowhere
+ ,Star City,Kamar-Taj, ,Riverdale,Central City,Gotham City, 
+ ,Kings Landing,Star City, ,Neverland,Duckburg,Metropolis, 
+ ,Rajnagar,Rajnagar, ,Blüdhaven,TheNowhere,Neverland, 
+ ,Kings Landing,Blüdhaven, ,Central City, ,Rajnagar, 
+ ,Gotham City,Kamar-Taj, ,District X, ,TheNowhere, 
+ ,Duckburg,Central City, ,Duckburg, , , 
+ ,Smallvile,Basin City, ,Kamar-Taj, , , 
+ ,Blüdhaven,Kings Landing, ,Neverland, , , 
+ ,Kings Landing,Central City, ,Star City, , , 
+ ,Neverland,Gotham City, ,Kamar-Taj, , , 
+ ,Star City,Smallvile, ,Gotham City, , , 
+ ,Smallvile,District X, ,Riverdale, , , 
+ ,Gotham City,Smallvile, ,Basin City, , , 
+ ,Duckburg,Blüdhaven, ,Neverland, , , 
+ ,Kings Landing,Smallvile, ,Duckburg, , , 
+ ,Smallvile,Neverland, ,Smallvile, , , 
+ ,Metropolis,Blüdhaven, ,Kamar-Taj, , , 
+ ,Basin City,Metropolis, ,District X, , , 
+ ,Gotham City,District X, ,Kings Landing, , , 
+ ,Blüdhaven,Smallvile, ,Duckburg, , , 
+ ,District X,Duckburg, ,Star City, , , 
+ ,Gotham City,Star City, ,Kings Landing, , , 
+ ,Rajnagar,Kamar-Taj, ,Smallvile, , , 
+ ,Duckburg,Duckburg, ,Star City, , , 
+ ,Metropolis,Metropolis, ,Kamar-Taj, , , 
+ ,Star City,District X, ,Metropolis, , , 
+ ,Kamar-Taj,Smallvile, ,Star City, , , 
+ ,Central City,Riverdale, , , , , 
+ ,Kamar-Taj,Gotham City, , , , , 
+ , , , , , , , 
+ , , , , , , , 
+ , , , , , , , 
+ , , , , , , , 
+ , , , , , , , 
