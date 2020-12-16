@@ -1,0 +1,43 @@
+Superman,Mickey Mouse,James Bond,Bugs Bunny,Batman,Dorothy Gale,Darth Vader,Homer Simpson
+Blüdhaven,Smallvile,District X,Central City,Kamar-Taj,Riverdale,Gotham City,Rajnagar
+Kings Landing,Central City,Kings Landing,Metropolis,Riverdale,Central City,TheNowhere,Kings Landing
+TheNowhere,Neverland,Duckburg,Central City,Neverland,Duckburg, ,Kamar-Taj
+ ,Smallvile,Gotham City,Kamar-Taj,Metropolis,Blüdhaven, ,District X
+ ,Riverdale,District X,District X,Smallvile,Metropolis, ,Central City
+ ,Gotham City,Star City,Kamar-Taj,Metropolis,Rajnagar, ,Duckburg
+ ,Rajnagar,Central City,Rajnagar,Kamar-Taj,Gotham City, ,Smallvile
+ ,Kamar-Taj,Kamar-Taj,Basin City,Metropolis,Rajnagar, ,Rajnagar
+ ,Riverdale,Star City,Neverland,TheNowhere,Neverland, ,Smallvile
+ ,Kings Landing,Duckburg,Metropolis, ,Rajnagar, ,Riverdale
+ ,Star City,Star City,Rajnagar, ,Smallvile, ,Duckburg
+ ,Rajnagar,Metropolis,Blüdhaven, ,Kamar-Taj, ,District X
+ ,Gotham City,District X,Riverdale, ,Neverland, ,Neverland
+ ,Metropolis,Rajnagar,Metropolis, ,Metropolis, ,Duckburg
+ ,Star City,Kamar-Taj,Star City, ,Smallvile, ,Gotham City
+ ,Blüdhaven,Basin City,Kamar-Taj, ,Kings Landing, ,Smallvile
+ ,Basin City,Gotham City,Gotham City, ,Basin City, ,Neverland
+ ,Riverdale,Neverland,Basin City, ,Kings Landing, ,Duckburg
+ ,Central City,District X,District X, ,Riverdale, ,Metropolis
+ ,Smallvile,Central City,Metropolis, ,Star City, ,Duckburg
+ ,Neverland,District X,Gotham City, ,Blüdhaven, ,Smallvile
+ ,Star City,Gotham City,Kamar-Taj, ,Riverdale, ,Star City
+ ,Gotham City,Kamar-Taj,Basin City, ,Basin City, ,Metropolis
+ ,Central City,Neverland,Rajnagar, ,Star City, ,Duckburg
+ ,District X,Metropolis,Duckburg, ,Blüdhaven, ,Smallvile
+ ,Gotham City,Blüdhaven,Metropolis, ,Smallvile, ,Neverland
+ ,Riverdale,Duckburg,Smallvile, ,Kings Landing, ,Central City
+ ,Duckburg,Neverland,Metropolis, ,District X, ,Gotham City
+ ,Rajnagar,District X,Neverland, ,Central City, ,Duckburg
+ ,District X,Kamar-Taj,Riverdale, ,Rajnagar, ,District X
+ ,Gotham City,Neverland,District X, ,Riverdale, ,Kamar-Taj
+ , ,District X,Basin City, ,Blüdhaven, , 
+ , , ,Riverdale, ,Rajnagar, , 
+ , , , , ,Central City, , 
+ , , , , ,Smallvile, , 
+ , , , , , , , 
+ , , , , , , , 
+ , , , , , , , 
+ , , , , , , , 
+ , , , , , , , 
+ , , , , , , , 
+ , , , , , , , 
