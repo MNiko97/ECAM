@@ -1,29 +1,41 @@
 #include <LedControl.h>
 #include <binary.h>
 
+// Pin for shift register 74HC595
+// for controlling multiple RGB LEDs
 #define DS_Pin 53
 #define STCP_Pin 51
 #define SHCP_Pin 49
 
-const int DIN = 10;
-const int CS =  9;
-const int CLK = 8;
+// Pin value for MAX7219 8x8 LEDs Matrix Driver
+#define DIN 10
+#define CS 9
+#define CLK 8
+// Number of MAX7219 connected in chain
 const int DEVICE = 4;
+
+// Triger and echo pin for all ultrasonic sensors
 const int trigPin[] = {2, 4, 6}; 
 const int echoPin[] = {3, 5, 7}; 
-const int BUZZER = 11;
-const int LIGHTSENSOR = A0;
 
+// Define buzzer and light sensor pin
+#define BUZZER 11
+#define LIGHTSENSOR A0
+
+// Number of ultrasonic sensors and RGB LED 
 const int SENSOR = 3;
 const int LED = 3;
 boolean registers[3]; 
 int analogValue;
 
+// Variable to store actual time 
+// allowing to execute tasks with different duration
 unsigned long radar_task;
 unsigned long display_task;
 unsigned long sound_task;
 unsigned long light_task;
 
+// Tasks variables
 int response_time;
 int levelbackup[3];
 int sound_level;
@@ -33,19 +45,22 @@ LedControl lc=LedControl(DIN,CLK,CS,DEVICE);
 
 void setup() {
   Serial.begin (115200);
+  // Initialize shift register 74HC595
   pinMode(DS_Pin, OUTPUT);
   pinMode(STCP_Pin, OUTPUT);
   pinMode(SHCP_Pin, OUTPUT);
+  // Initialize all 8x8 LED Matrix
   for(int index=0;index<lc.getDeviceCount();index++) {
       lc.shutdown(index,true);
       lc.setIntensity(index, 0);
       lc.clearDisplay(index);
   }
-
+  //Initialize all ultrasonic sensors
   for(int i = 0; i < SENSOR; i++){
     pinMode(trigPin[i], OUTPUT); 
     pinMode(echoPin[i], INPUT); 
   }
+  //Initialize time for every tasks
   radar_task = millis();
   display_task = millis();
   sound_task = millis();
@@ -56,7 +71,6 @@ void setup() {
 }
 
 void loop() {
-
   // Measure from every sensor every 1ms
   if (millis() - radar_task > 1){
     radar_task = millis();
@@ -90,7 +104,7 @@ void loop() {
     sound_task = millis();
   }
   // Make the buzzer beeping at the right frequency 
-  // Frequency value vary from distances
+  // Frequency value is variating with the obstacle distance
   if (frequency != 0){
     if (millis() - sound_task > frequency){
       tone(BUZZER, 1000);
@@ -147,7 +161,7 @@ int measure(int index){
 }
 
 // Return the level of proximity
-// Higher means object is near from the sensor
+// Higher means object is closer to the sensor
 int check(int distance){
   int level;
   if (distance > 34){
