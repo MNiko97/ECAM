@@ -20,7 +20,7 @@ Finish the installation the first time the container is executed by running:
     source finish_installation.sh
 
 ## Prerequisites
-### 1. Install Docker:
+### 1. Install Docker
 Update the apt package index and install packages to allow apt to use a repository over HTTPS:
 
     sudo apt-get update
@@ -54,6 +54,16 @@ Add the command to your shell startup script:
 
     echo "source /opt/ros/foxy/setup.bash" >> ~/.bashrc
 
-### 3. Add Extensions to Visual Code:
+### 3. Add Extensions to Visual Code
 
 Docker, Python and Remote Development
+
+### 4. Setup Visual Code Environment
+
+## First Install
+Clone repository with SSH.
+
+Inside project root folder enter the following commands:
+
+    git submodule init
+    git submodule update
