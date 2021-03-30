@@ -20,9 +20,19 @@ Finish the installation the first time the container is executed by running:
     source finish_installation.sh
 
 ## First install
-### Install docker:
+### 1. Install docker:
 Update the apt package index and install packages to allow apt to use a repository over HTTPS:
 
     sudo apt-get update
     
     sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
+    
+Add Docker’s official GPG key then install the latest version of Docker Engine and containerd:
+    
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    
+    sudo apt-get update
+    
+    sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+### 2. Install Ros2
