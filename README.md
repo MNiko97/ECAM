@@ -25,9 +25,9 @@ Update the apt package index and install packages to allow apt to use a reposito
 
     sudo apt-get update
     
-    sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
+    sudo apt-get install \ apt-transport-https \ ca-certificates \ curl \ gnupg \ lsb-release
     
-Add Docker’s official GPG key then install the latest version of Docker Engine and containerd:
+Add Docker’s official GPG key then install the latest stable version of Docker Engine and containerd:
     
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
     
@@ -38,3 +38,21 @@ Add Docker’s official GPG key then install the latest version of Docker Engine
     sudo apt-get install docker-ce docker-ce-cli containerd.io
 
 ### 2. Install Ros2
+Add the ROS 2 apt repositories to your system:
+
+    sudo apt update && sudo apt install curl gnupg2 lsb-release
+    
+    curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+    
+    sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2-latest.list'
+    
+Install ROS 2:
+
+    sudo apt update
+    
+    sudo apt install ros-foxy-desktop
+    
+Add the command to your shell startup script:
+
+    echo "source /opt/ros/foxy/setup.bash" >> ~/.bashrc
+
