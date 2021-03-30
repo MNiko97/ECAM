@@ -61,7 +61,8 @@ Docker, Python and Remote Development
 ### 4. Setup Visual Code Environment
 
 ## First Install
-Clone repository with SSH (https://gitlab.spaceapplications.com/help/ssh/README#generating-a-new-ssh-key-pair)
+Add personal public SSH Key in Gitlab (https://gitlab.spaceapplications.com/help/ssh/README#generating-a-new-ssh-key-pair)
+Clone the repository using SSH.
 
 Inside project root folder enter the following commands:
 
