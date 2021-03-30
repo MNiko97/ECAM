@@ -54,6 +54,6 @@ Add the command to your shell startup script:
 
     echo "source /opt/ros/foxy/setup.bash" >> ~/.bashrc
 
-###3. Add Extensions to Visual Code:
+### 3. Add Extensions to Visual Code:
 
 Docker, Python and Remote Development
