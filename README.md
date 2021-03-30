@@ -37,7 +37,12 @@ Add Docker’s official GPG key then install the latest stable version of Docker
     
     sudo apt-get install docker-ce docker-ce-cli containerd.io
 
-### 2. Install Ros2
+Enable Docker:
+
+    sudo usermod -aG docker <your-user>
+    sudo systemctl enable docker.service
+
+### 2. Install ROS 2
 Add the ROS 2 apt repositories to your system:
 
     sudo apt update && sudo apt install curl gnupg2 lsb-release
@@ -55,4 +60,3 @@ Install ROS 2:
 Add the command to your shell startup script:
 
     echo "source /opt/ros/foxy/setup.bash" >> ~/.bashrc
-
