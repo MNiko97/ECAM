@@ -20,7 +20,7 @@ Finish the installation the first time the container is executed by running:
     source finish_installation.sh
 
 ## Prerequisites
-### 1. Install docker:
+### 1. Install Docker:
 Update the apt package index and install packages to allow apt to use a repository over HTTPS:
 
     sudo apt-get update
@@ -39,7 +39,7 @@ Add Docker’s official GPG key then install the latest stable version of Docker
 
 Enable Docker:
 
-    sudo usermod -aG docker <your-user>
+    sudo usermod -aG docker <username>
     sudo systemctl enable docker.service
 
 ### 2. Install ROS 2
