@@ -1,7 +1,3 @@
-# ECAM Computer Science Projects
-
-Here are all the projects for the 2nd and 3rd year of Computer Science Engineering Bachelor at ECAM
-
 # LUVMI-X Rover
 
 Main repository for LUVMI-X rover on-board software.
