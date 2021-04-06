@@ -32,8 +32,6 @@ sudo systemctl enable docker.service
 Install the following extensions: 
 Docker, Python and Remote Development
 
-### 4. Setup Visual Code Environment
-
 ## First Run
 Add personal public SSH Key in Gitlab (https://gitlab.spaceapplications.com/help/ssh/README#generating-a-new-ssh-key-pair)
 Clone the repository using SSH.
