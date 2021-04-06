@@ -9,7 +9,7 @@ Operating System: tested on Ubuntu 20.04.02 LTS
 ### Install Docker
 Update the apt package index and install packages to allow apt to use a repository over HTTPS:
 ```console
-$sudo apt-get update
+foo@bar:~$ sudo apt-get update
 $sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
 ```
     
