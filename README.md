@@ -2,25 +2,13 @@
 
 Main repository for LUVMI-X rover on-board software.
 
-
-## Docker
-The software runs within a Docker container. To simplify its management 
-(creating, starting and attaching to it) a helper script is
-provided:
-
-    .Docker/docker.sh
-
-### First run
-Finish the installation the first time the container is executed by running:
-
-    source finish_installation.sh
-
 ## Prerequisites
 ### 1. Install Docker
 Update the apt package index and install packages to allow apt to use a repository over HTTPS:
-
+'''console
     sudo apt-get update
     sudo apt-get install \ apt-transport-https \ ca-certificates \ curl \ gnupg \ lsb-release
+'''
     
 Add Docker’s official GPG key then install the latest stable version of Docker Engine and containerd:
     
@@ -56,11 +44,30 @@ Docker, Python and Remote Development
 
 ### 4. Setup Visual Code Environment
 
-## First Install
+## First Run
 Add personal public SSH Key in Gitlab (https://gitlab.spaceapplications.com/help/ssh/README#generating-a-new-ssh-key-pair)
 Clone the repository using SSH.
 
-Inside project root folder enter the following commands:
+Inside _packages_ folder enter the following commands:
 
     git submodule init
     git submodule update
+
+Go to _Docker_ folder and run docker.sh:
+
+    ./docker.sh
+
+Countainer should be created now and you should be inside. Finish the installation the first time the container is executed by running:
+
+    source finish_installation.sh
+
+Go to _install_ folder change ownership to your local username and make the file _setup.sh_ executable. Run the _setup.sh_ script to install all dependencies for the virtual environment:
+
+    ./setup.sh
+
+## Docker
+The software runs within a Docker container. To simplify its management 
+(creating, starting and attaching to it) a helper script is
+provided:
+
+    .Docker/docker.sh
