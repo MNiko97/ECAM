@@ -11,7 +11,7 @@ sudo apt-get update
 sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
 ```
     
-Add Docker’s official GPG key then install the latest stable version of Docker Engine and containerd:
+Add Docker’s official GPG key then install the latest stable version of Docker Engine and container:
 ```console    
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg 
 echo \ "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \ $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null 
@@ -49,7 +49,7 @@ Countainer should be created now and you should be inside. Finish the installati
 source finish_installation.sh
 ```    
 
-You can now build the packages and install the linux image (and all its dependencies) by running the following commands:
+You can now build the packages and install the docker image (and all its dependencies) by running the following commands:
 ```console
 colcon build --symlink-install
 source install/setup.bash
