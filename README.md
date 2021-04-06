@@ -2,7 +2,7 @@
 Main repository for LUVMI-X rover on-board software.
 
 ## Prerequisites
-Operating System: tested on Ubuntu 20.04.02 LTS
+Operating System: tested on Ubuntu 20.04.02 LTS with python version 3.8.5
 
 ### Install Docker
 Update the apt package index and install packages to allow apt to use a repository over HTTPS:
