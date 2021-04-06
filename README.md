@@ -11,11 +11,12 @@ Update the apt package index and install packages to allow apt to use a reposito
 '''
     
 Add Docker’s official GPG key then install the latest stable version of Docker Engine and containerd:
-    
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg 
-    echo \ "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \ $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null 
-    sudo apt-get update
-    sudo apt-get install docker-ce docker-ce-cli containerd.io
+'''console    
+    $curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg 
+    $echo \ "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \ $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null 
+    &sudo apt-get update
+    $udo apt-get install docker-ce docker-ce-cli containerd.io
+'''
 
 Enable Docker:
 
