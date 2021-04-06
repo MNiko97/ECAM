@@ -9,8 +9,8 @@ Operating System: tested on Ubuntu 20.04.02 LTS
 ### Install Docker
 Update the apt package index and install packages to allow apt to use a repository over HTTPS:
 ```console
-$ sudo apt-get update
-$ sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
+sudo apt-get update
+sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
 ```
     
 Add Docker’s official GPG key then install the latest stable version of Docker Engine and containerd:
@@ -48,13 +48,13 @@ $ ./docker.sh
 ```
 Countainer should be created now and you should be inside. Finish the installation the first time the container is executed by running:
 ```console
-$ colcon build --symlink-install
-$ source install/setup.bash
+$ source finish_installation.sh
 ```    
 
-Go to _install_ folder change ownership to your local username and make the file _setup.sh_ executable. Run the _setup.sh_ script to install all dependencies for the virtual environment:
+You can now build the packages and install the linux image (ans all its dependencies) by running the following commands:
 ```console
-$./setup.sh
+$ colcon build --symlink-install
+$ source install/setup.bash
 ```
 ## Docker
 The software runs within a Docker container. To simplify its management 
