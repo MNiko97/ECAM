@@ -1,9 +1,7 @@
 # LUVMI-X Rover
-
 Main repository for LUVMI-X rover on-board software.
 
 ## Prerequisites
-
 Operating System: tested on Ubuntu 20.04.02 LTS
 
 ### Install Docker
@@ -40,10 +38,12 @@ Inside _packages_ folder enter the following commands (disclaimer: do not use --
 ```console
 git submodule update --init --recursive
 ```
+
 Go to _Docker_ folder and run docker.sh:
 ```console
 ./docker.sh
 ```
+
 Countainer should be created now and you should be inside. Finish the installation the first time the container is executed by running:
 ```console
 source finish_installation.sh
@@ -54,6 +54,7 @@ You can now build the packages and install the linux image (and all its dependen
 colcon build --symlink-install
 source install/setup.bash
 ```
+
 ## Docker
 The software runs within a Docker container. To simplify its management 
 (creating, starting and attaching to it) a helper script is
