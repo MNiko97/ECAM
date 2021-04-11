@@ -48,11 +48,10 @@ When selecting a part and clicking the "Validate" button, there is an error mess
 
 - Fix a convention for all the labels, tabs, columns names and eventual error messages for the entire application.
 
-Exemple 1: every word starting with a capital letter -> This Is A Label Example
+    Exemple 1: every word starting with a capital letter -> This Is A Label Example
+    Example 2: only first word starting with a capital letter -> Another example
 
-Example 2: only first word starting with a capital letter -> Another example
-
-Could be different conventions regarding if it is a label or a window name but we need to fix those conventions.
+Could be different conventions regarding if it is a label or a window name ... but we need to fix those conventions
 - Remove all obsolete GetDatable and other SQL Methods inside other class. Instead use the public method from InternalApp.cs
 
 ## Minor Issues:
