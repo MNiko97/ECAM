@@ -8,36 +8,41 @@ Issue #2: comment says "NOT READY YET", investigate
 - InternalApp.cs:
 Issue #3: we discussed a solution for the password. 
 Issue #4: there is two part constructors. One constructor is used to research part but have 0 references. 
-We already dissusced about that but there has to be a better solution. Same remark for client search.
+We already dissusced about that but there has to be a better solution. Same remark for client search
 
 ## GUI Issues
 ### "Manager" View:
-- Quitting manager window redirect user to the password form not the main menu.
-The password still remains in the text field. 
-This always happend when we click enter after typing password and not using the confirm button to log on
-- Need to rename column name for the datable in "All Bikes", "Supplier orders" tab
-- Fix the convention for naming different tabs
-- Add back button in every tab to allowing to exit manager view
-- Add the "tabPage4" content
-- Remove "Planning" tab. Button is useless, find an alternative allowing the manager to go into the planning view.
+- Fix issue that redirects user to the password form and not the main menu when quitting manager window. The password still remains in the text field. 
+This happen when we input "enter" on the keyboard after typing password and not using the confirm button to log on
+- Rename tables columns names in "All Bikes" and "Supplier orders" tab
+- Fix convention for naming different tabs
+- Add button "Back" in every tab to allowing to exit manager view
+- Add tab "tabPage4" content
+- Remove tab "Planning" and find an alternative way allowing the manager to go into the planning view
+- Rename window from "Manager_menus" to "Menu" or "Manager"
 
 ### "Add to production" View: 
-- When adding bike to production, if the form is incomplete, there is no message to tell us what is happening.
-- Change the button text "Save" to "Add" as we are adding bikes and not saving them. 
-- Add a back button.
+- Add message to tell us what is happening when adding bike to production if the form is incomplete
+- Rename button "Save" to "Add" as we are adding bikes and not saving them
+- Add button "Back"
 
 ### "Planning" View: 
-- When using AutoPlanner button there is no message to indicate if the procedure was successfull or not.
-- Rename the window name "Manager" to Planning
-- Rename all day in English
+- Add message to indicate if the procedure was successfull or not when using AutoPlanner
+- Rename window from "Manager" to "Planning"
+- Rename days in English
+- Shorten button "Add bike for production to stock" to "Update Stock" or similar
 
 ### "Fitter" View:
-- We discussed in this in the past but allowing the fitter to view next days (maybe previous also) could be a good idea
-- Searching part does not work correctly, the full reference need to be written.
-- If we only allow to search parts through reference, rename label "Search part" by "Search part reference"
-- Rename columns name according to convention
-- When selecting a part and clicking the validate button, there is an error message "Error,try again".
-Check Issue #4 for more info.
+- Allow the fitter to view next days (maybe previous also). We discussed this in the past but it could be a good idea
+- Remove the "!" on the refresh button text
+
+### "Broken Part" View:
+- Fix the part search. It does not work correctly, the full reference need to be written. 
+When selecting a part and clicking the "Validate" button, there is an error message "Error, try again". Check Issue #4 for more info
+- Rename label "Search part" by "Search part reference" if we only allow to search parts through reference
+- Rename columns according to convention
+- Rename button "Validate" to "Report"
+- Rename label "Broken part :" to "Selected Part:". Maybe remove completely this label and its content
 
 ## General Remarks
 
