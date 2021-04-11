@@ -1,4 +1,4 @@
-# TODO
+# TO DO List
 ## In Code Issues
 - AddPart.cs:
 Issue #1: fix the minimum quantity. Should be provided so we can later add the write amount when building bike
@@ -47,11 +47,8 @@ When selecting a part and clicking the "Validate" button, there is an error mess
 ## General Remarks
 
 - Fix a convention for all the labels, tabs, columns names and eventual error messages for the entire application.  Could be different conventions regarding if it is a label or a window name ... but we need to fix those conventions
-
-    Exemple 1: every word starting with a capital letter -> _This is a label convention_
-    
-    Example 2: only first word starting with a capital letter -> _This Is A Button Convention_
-
+**Exemple 1:** every word starting with a capital letter -> _This is a label convention_
+**Example 2:** only first word starting with a capital letter -> _This Is A Button Convention_
 - Remove all obsolete GetDatable and other SQL Methods inside other class. Instead use the public method from InternalApp.cs
 
 ## Minor Issues:
