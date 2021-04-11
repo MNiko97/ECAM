@@ -1,64 +1,55 @@
-# LUVMI-X Rover
-Main repository for LUVMI-X rover on-board software.
+# TODO
+## In Code Issues
+- AddPart.cs:
+Issue #1: fix the minimum quantity. Should be provided so we can later add the write amount when building bike
+(Exemple: minimum quantity for wheel is 2 in a bike)
+- Order.cs:
+Issue #2: comment says "NOT READY YET", investigate
+- InternalApp.cs:
+Issue #3: we discussed a solution for the password. 
+Issue #4: there is two part constructors. One constructor is used to research part but have 0 references. 
+We already dissusced about that but there has to be a better solution. Same remark for client search.
 
-## Prerequisites
-Operating System: tested on Ubuntu 20.04.02 LTS with python version 3.8.5
+## GUI Issues
+### "Manager" View:
+- Quitting manager window redirect user to the password form not the main menu.
+The password still remains in the text field. 
+This always happend when we click enter after typing password and not using the confirm button to log on
+- Need to rename column name for the datable in "All Bikes", "Supplier orders" tab
+- Fix the convention for naming different tabs
+- Add back button in every tab to allowing to exit manager view
+- Add the "tabPage4" content
+- Remove "Planning" tab. Button is useless, find an alternative allowing the manager to go into the planning view.
 
-### Install Docker
-Update the apt package index and install packages to allow apt to use a repository over HTTPS:
-```console
-sudo apt-get update
-sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
-```
-    
-Add Docker’s official GPG key then install the latest stable version of Docker Engine and container:
-```console    
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg 
-echo \ "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \ $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null 
-sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io
-```
+### "Add to production" View: 
+- When adding bike to production, if the form is incomplete, there is no message to tell us what is happening.
+- Change the button text "Save" to "Add" as we are adding bikes and not saving them. 
+- Add a back button.
 
-Enable Docker:
-```console
-sudo usermod -aG docker <username>
-sudo systemctl enable docker.service
-```
+### "Planning" View: 
+- When using AutoPlanner button there is no message to indicate if the procedure was successfull or not.
+- Rename the window name "Manager" to Planning
+- Rename all day in English
 
-## Setup your coding environment (for Visual Code users)
+### "Fitter" View:
+- We discussed in this in the past but allowing the fitter to view next days (maybe previous also) could be a good idea
+- Searching part does not work correctly, the full reference need to be written.
+- If we only allow to search parts through reference, rename label "Search part" by "Search part reference"
+- Rename columns name according to convention
+- When selecting a part and clicking the validate button, there is an error message "Error,try again".
+Check Issue #4 for more info.
 
-Install the following extensions: 
-Docker, Python and Remote Development
+## General Remarks
 
-## First Run
-Add personal public SSH Key in Gitlab (https://gitlab.spaceapplications.com/help/ssh/README#generating-a-new-ssh-key-pair)
-Clone the repository using SSH.
+- Fix a convention for all the labels, tabs, columns names and eventual error messages for the entire application.
+Exemple 1: every word starting with a capital letter -> This Is A Label Example
+Example 2: only first word starting with a capital letter -> Another example
+Could be different conventions regarding if it is a label or a window name but we need to fix those conventions.
+- Remove all obsolete GetDatable and other SQL Methods inside other class. Instead use the public method from InternalApp.cs
 
-Inside _packages_ folder enter the following commands (disclaimer: do not use --recursive flag if you arleady used it during the cloning process):
-```console
-git submodule update --init --recursive
-```
-
-Go to _Docker_ folder and run docker.sh:
-```console
-./docker.sh
-```
-
-Countainer should be created now and you should be inside. Finish the installation the first time the container is executed by running:
-```console
-source finish_installation.sh
-```    
-
-You can now build the packages and install the docker image (and all its dependencies) by running the following commands:
-```console
-colcon build --symlink-install
-source install/setup.bash
-```
-
-## Docker
-The software runs within a Docker container. To simplify its management 
-(creating, starting and attaching to it) a helper script is
-provided:
-```console
-.Docker/docker.sh
-```
+## Minor Issues:
+- Inside Planning.cs, try to use InternalApp database access methods on VerifyDate, BikeByDay, GetDataTable (redondant name) and UpdateMaker methods
+- Inside Order.cs, try to use Bovelo database access methods on Save method
+- Inside Client.cs, try to use Bovelo database access methods on Save method
+- Inside BuyableItem.cs, try to use Bovelo database access methods on Save method
+- As Order.cs, Client.cs and BuyableItem.cs are part of bovelo app, we need to add the same database methods from InternalApp.cs to Bovelo.cs
