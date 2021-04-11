@@ -44,16 +44,27 @@ When selecting a part and clicking the "Validate" button, there is an error mess
 - Rename button "Validate" to "Report"
 - Rename label "Broken part :" to "Selected Part:". Maybe remove completely this label and its content
 
+### "User" View:
+- Rename window from "Users" to "Home"
+- Rename lable "User selection" to "Log in as:" or simply remove the label
+
+### "Password" View:
+- Rename window from "Password" to "Authentification" or "Connexion"
+- Rename button "Confirm" to "Log In"
+
 ## General Remarks
 
-- Fix a convention for all the labels, tabs, columns names and eventual error messages for the entire application.  Could be different conventions regarding if it is a label or a window name ... but we need to fix those conventions
-**Exemple 1:** every word starting with a capital letter -> _This is a label convention_
-**Example 2:** only first word starting with a capital letter -> _This Is A Button Convention_
-- Remove all obsolete GetDatable and other SQL Methods inside other class. Instead use the public method from InternalApp.cs
+- Fix convention for labels, tabs, columns names and eventual error messages for the entire application. Could be different conventions regarding if it is a label or a tab but we need to fix those conventions
+
+    Exemple 1: every word starting with a capital letter -> _This is a label convention_
+    
+    Example 2: only first word starting with a capital letter -> _This Is A Button Convention_
+    
+- Remove all obsolete GetDatable and other SQL Methods inside other class, instead use the public method from InternalApp.cs. This mainly apply to Bovelo application
 
 ## Minor Issues:
-- Inside Planning.cs, try to use InternalApp database access methods on VerifyDate, BikeByDay, GetDataTable (redondant name) and UpdateMaker methods
-- Inside Order.cs, try to use Bovelo database access methods on Save method
-- Inside Client.cs, try to use Bovelo database access methods on Save method
-- Inside BuyableItem.cs, try to use Bovelo database access methods on Save method
-- As Order.cs, Client.cs and BuyableItem.cs are part of bovelo app, we need to add the same database methods from InternalApp.cs to Bovelo.cs
+- Inside **Planning.cs**, try to use InternalApp database access methods on VerifyDate, BikeByDay, GetDataTable and UpdateMaker methods
+- Inside **Order.cs**, try to use Bovelo database access methods on Save method
+- Inside **Client.cs**, try to use Bovelo database access methods on Save method
+- Inside **BuyableItem.cs**, try to use Bovelo database access methods on Save method
+- As **Order.cs**, **Client.cs** and **BuyableItem.cs** are part of Bovelo app, we need to add the same database methods from **InternalApp.cs** to **Bovelo.cs**
